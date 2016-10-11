@@ -207,7 +207,8 @@
         <activity android:name=".activities.interactive_chart.InteractiveActivity" />
         <activity android:name=".activities.horizontalScroll.HorizontalScrollActivity" />
         <activity android:name=".activities.test3d.Test3dActivity" />
-        <activity android:name=".activities.fling_test.FlingTestActivity"></activity>
+        <activity android:name=".activities.fling_test.FlingTestActivity" />
+        <activity android:name=".activities.bessel.BesselActivity"></activity>
     </application>
 
 </manifest>

@@ -33,6 +33,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import test1.nh.com.demos1.R;
+import test1.nh.com.demos1.activities.bessel.BesselActivity;
 import test1.nh.com.demos1.activities.fling_test.FlingTestActivity;
 import test1.nh.com.demos1.activities.horizontalScroll.HorizontalScrollActivity;
 import test1.nh.com.demos1.activities.interactive_chart.InteractiveActivity;
@@ -527,6 +528,11 @@ public class MainActivity_from extends AppCompatActivity {
     public void jump_fling_test(View v){
         FlingTestActivity.start(this);
     }
+
+    public void jump_bessel_test(View v){
+        BesselActivity.start(this);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

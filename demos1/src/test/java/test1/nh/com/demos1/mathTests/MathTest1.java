@@ -1,8 +1,11 @@
 package test1.nh.com.demos1.mathTests;
 
+import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import test1.nh.com.demos1.utils.math.MathVector2D;
 
 /**
  * Created by Administrator on 15-12-30.
@@ -48,6 +51,30 @@ public class MathTest1 {
     }
 
 
+
+    @Test
+    public void test5(){
+        Vector2D v2=new Vector2D(100,100);
+        Vector2D v1=new Vector2D(100,0);
+        Vector2D v3=new Vector2D(0,100);
+        System.out.println("angle v2 :"+Vector2D.angle(v2,v1)/Math.PI*180);
+        System.out.println("angle v1 :"+Vector2D.angle(v2,v1)/Math.PI*180);
+    }
+
+    @Test
+    public void test6(){
+        MathVector2D.Vector v2 =new MathVector2D.Vector(100,100);
+        MathVector2D.Vector v1 =new MathVector2D.Vector(100,-100);
+        MathVector2D.Vector v3 =new MathVector2D.Vector(-100,1);
+        System.out.println("length:"+v2.getLength());
+        System.out.println("angle2:"+v2.getAngle());
+        System.out.println("angle1:"+v1.getAngle());
+        System.out.println("angle3:"+v3.getAngle());
+        v2.scaleTo(50);
+        System.out.println("length:"+v2.getLength()+"   "+v2);
+        v2.addAngle(45);
+        System.out.println("length:"+v2.getLength()+"   "+v2);
+    }
 
 
 

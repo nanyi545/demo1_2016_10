@@ -475,6 +475,14 @@
             android:onClick="jump_fling_test"
             android:text="fling 测试"/>
 
+        <Button
+            android:id="@+id/button61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button60"
+            android:onClick="jump_bessel_test"
+            android:text="bessel curve 测试"/>
+
 
 
 
