@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import test1.nh.com.demos1.utils.math.MathVector2D;
@@ -83,59 +82,88 @@ public class BesselView2 extends View {
 //        canvas.drawCircle( p_1[1].x,p_1[1].y,1, paintCircle);
 //        canvas.drawCircle( p_2[3].x,p_2[3].y,1, paintCircle);
 //        canvas.drawCircle( p_2[2].x,p_2[2].y,1, paintCircle);
-
+//        canvas.drawCircle( p_ctrl1.x,p_ctrl1.y,1, paintCircle);
+//        canvas.drawCircle( p_ctrl2.x,p_ctrl2.y,1, paintCircle);
     }
 
     Paint paint,paintCircle;
 
     Point p_center1=new Point(50,50);
-    Point p_center2=new Point(250,250);
+    Point p_center2=new Point(60,80);
+
+    Point p_ctrl1,p_ctrl2;
+
+    private void resetCtrlPoints(){
+        float n=2f;
+        int x1= (int) (p_center1.x+(p_center2.x-p_center1.x)/n);
+        int y1= (int) (p_center1.y+(p_center2.y-p_center1.y)/n);
+        p_ctrl1=new Point(x1,y1);
+
+        MathVector2D.Vector v1=new MathVector2D.Vector( p_center2.x-p_center1.x , p_center2.y-p_center1.y );
+        v1.scaleTo(8);
+        v1.addAngle(-90);
+        p_ctrl1.offset(v1.dx,v1.dy);
+
+        int x2= (int) (p_center2.x-(p_center2.x-p_center1.x)/n);
+        int y2= (int) (p_center2.y-(p_center2.y-p_center1.y)/n);
+        p_ctrl2=new Point(x2,y2);
+
+        v1.addAngle(-180);
+        p_ctrl2.offset(v1.dx,v1.dy);
+
+    }
 
     int r1=10,r2=20;
 
     Point[] p_1=new Point[4];
     Point[] p_2=new Point[4];
 
-    int offset=50;  //  ***  how to decide this parameter  ?????
 
     private void initPath(){
+        resetCtrlPoints();
+
         path=new Path();
 
         p_1[0]=new Point(p_center1.x,p_center1.y);
         MathVector2D.Vector v1=new MathVector2D.Vector( p_center2.x-p_center1.x , p_center2.y-p_center1.y );
-        Log.i("BBB","v1 angle:"+v1.getAngle()+"   "+v1);
         v1.scaleTo(r1);
         v1.addAngle(-45);
         p_1[0].offset(v1.dx,v1.dy);
-        Log.i("BBB","0"+v1);
         p_1[1]=new Point(p_center1.x,p_center1.y);
         v1.addAngle(90);
         p_1[1].offset(v1.dx,v1.dy);
-        Log.i("BBB","1"+v1);
         p_1[2]=new Point(p_center1.x,p_center1.y);
         v1.addAngle(90);
         p_1[2].offset(v1.dx,v1.dy);
-        Log.i("BBB","2"+v1);
         p_1[3]=new Point(p_center1.x,p_center1.y);
         v1.addAngle(90);
         p_1[3].offset(v1.dx,v1.dy);
-        Log.i("BBB","3"+v1);
+
+        MathVector2D.Vector v2=new MathVector2D.Vector( p_center2.x-p_center1.x , p_center2.y-p_center1.y );
+        v2.scaleTo(r2);
+        v2.addAngle(-45);
 
         p_2[0]=new Point(p_center2.x,p_center2.y);
-        p_2[0].offset(r2,0);
+        p_2[0].offset(v2.dx,v2.dy);
+
         p_2[1]=new Point(p_center2.x,p_center2.y);
-        p_2[1].offset(0,r2);
+        v2.addAngle(90);
+        p_2[1].offset(v2.dx,v2.dy);
         p_2[2]=new Point(p_center2.x,p_center2.y);
-        p_2[2].offset(-r2,0);
+        v2.addAngle(90);
+        p_2[2].offset(v2.dx,v2.dy);
         p_2[3]=new Point(p_center2.x,p_center2.y);
-        p_2[3].offset(0,-r2);
+        v2.addAngle(90);
+        p_2[3].offset(v2.dx,v2.dy);
 
 
         path.moveTo(p_1[0].x,p_1[0].y);
-        path.cubicTo(p_center1.x+offset,p_center1.y+offset,p_center2.x-offset,p_center2.y-offset,p_2[3].x,p_2[3].y);
+//        path.cubicTo(p_ctrl1.x,p_ctrl1.y,p_ctrl2.x,p_ctrl2.y,p_2[3].x,p_2[3].y);
+        path.quadTo(p_ctrl1.x,p_ctrl1.y,p_2[3].x,p_2[3].y);
         path.lineTo(p_2[2].x,p_2[2].y);
 
-        path.cubicTo(p_center2.x-offset,p_center2.y-offset,p_center1.x+offset,p_center1.y+offset,p_1[1].x,p_1[1].y);
+//        path.cubicTo(p_ctrl2.x,p_ctrl2.y,p_ctrl1.x,p_ctrl1.y,p_1[1].x,p_1[1].y);
+        path.quadTo(p_ctrl2.x,p_ctrl2.y,p_1[1].x,p_1[1].y);
         path.close();
 
 
