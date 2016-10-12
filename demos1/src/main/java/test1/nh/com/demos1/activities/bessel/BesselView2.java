@@ -7,7 +7,10 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Scroller;
 
 import test1.nh.com.demos1.utils.math.MathVector2D;
 
@@ -16,22 +19,35 @@ import test1.nh.com.demos1.utils.math.MathVector2D;
  */
 public class BesselView2 extends View {
 
+    private static int currentState;
+    private static final int STATE_AT_START=1;
+    private static final int STATE_STRETCHING=2;
+    private static final int STATE_RELEASING_TO_START=3;
+    private static final int STATE_RELEASING_TO_END=4;
+    private static final int STATE_AT_END=5;
+    private static final int STATE_DISOLVING=6;
+
+
 
     public BesselView2(Context context) {
         super(context);
+        init(context);
         initPath();
 
     }
 
     public BesselView2(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
         initPath();
 
     }
 
     public BesselView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context);
         initPath();
+
     }
 
 
@@ -62,17 +78,193 @@ public class BesselView2 extends View {
 
     Path path;
 
+    private Scroller toEndScroller,toStartScroller,disolveScroller;
+
+
+    private float[] disolveXseed=new float[15];
+    private float[] disolveYseed=new float[15];
+    private float[] disolveX=new float[15];
+    private float[] disolveY=new float[15];
+
+    private float disolveR=0;
+
+    private void init(Context context){
+        currentState=STATE_AT_START;
+        Log.i("BBB","STATE_AT_START");
+
+
+        for (int ii=0;ii<disolveXseed.length;ii++){
+            disolveXseed[ii]= (float) Math.random()-0.5f;
+            disolveYseed[ii]= (float) Math.random()-0.5f;
+        }
+        disolveR=r2/5;
+
+
+        toEndScroller=new Scroller(context);
+        toStartScroller=new Scroller(context);
+        disolveScroller=new Scroller(context);
+
+
+        // ---init paint
+        paint=new Paint();
+        paint.setColor(Color.rgb(120,30,20));
+        paint.setAntiAlias(true);
+
+        paintCircle=new Paint();
+        paintCircle.setColor(Color.rgb(20,130,20));
+        paintCircle.setAntiAlias(true);
+
+        disolvePaint=new Paint();
+        disolvePaint.setColor(Color.rgb(120,30,20));
+        disolvePaint.setAntiAlias(true);
+
+    }
+
+
+    private int currentDisolveStage=0;
+    private static final int MAX_DISOLVE_STAGE=255;
+    private void dissovleAtEnd(){
+        disolveScroller.startScroll(0,0,0,MAX_DISOLVE_STAGE,600);
+        invalidate();
+    }
+
+
+    @Override
+    public void computeScroll() {
+        if (toEndScroller.computeScrollOffset()) {
+            p_center1.x=toEndScroller.getCurrX();
+            p_center1.y=toEndScroller.getCurrY();
+            initPath();
+            invalidate();
+        } else {
+            if (currentState==STATE_RELEASING_TO_END){
+                currentState=STATE_AT_END;
+                Log.i("BBB","STATE_AT_END");
+                dissovleAtEnd();
+            }
+        }
+        if (toStartScroller.computeScrollOffset()) {
+            p_center2.x=toStartScroller.getCurrX();
+            p_center2.y=toStartScroller.getCurrY();
+            initPath();
+            invalidate();
+        }  else {
+            if (currentState==STATE_RELEASING_TO_START){
+                currentState=STATE_AT_START;
+                Log.i("BBB","STATE_AT_START");
+            }
+        }
+
+
+        if (disolveScroller.computeScrollOffset()){
+
+            int alpha=MAX_DISOLVE_STAGE-disolveScroller.getCurrY();
+            int progress=disolveScroller.getCurrY();
+            disolvePaint.setAlpha(alpha);
+
+            for (int ii=0;ii<disolveX.length;ii++){
+                disolveX[ii]= disolveXseed[ii]*progress/MAX_DISOLVE_STAGE*2*(2*r2);
+                disolveY[ii]= disolveYseed[ii]*progress/MAX_DISOLVE_STAGE*2*(2*r2);
+            }
+
+            invalidate();
+        }
+
+
+
+    }
+
+
+
+    boolean withInStart=false;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        int action = event.getActionMasked();
+
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+
+                int touchX_= (int) event.getX();
+                int touchY_= (int) event.getY();
+
+                MathVector2D.Vector temp=new MathVector2D.Vector(touchX_-p_center1.x,touchY_-p_center1.y);
+
+                if (temp.getLength()>(2*r1)){
+                    withInStart=false;
+                    return true;
+                }  else {
+                    withInStart=true;
+                }
+
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                if(withInStart) {
+                    currentState = STATE_STRETCHING;
+
+                    int touchX = (int) event.getX();
+                    int touchY = (int) event.getY();
+
+                    p_center2.x = touchX;
+                    p_center2.y = touchY;
+                    initPath();
+                    invalidate();
+
+                }
+
+                break;
+
+            case MotionEvent.ACTION_UP:
+                if (withInStart) {
+                    int dy = p_center1.x - p_center2.x;
+                    int dx = p_center1.y - p_center2.y;
+                    MathVector2D.Vector v = new MathVector2D.Vector(dx, dy);
+                    if (v.getLength() < 150) {
+                        dx = p_center1.x - p_center2.x;
+                        dy = p_center1.y - p_center2.y;
+                        toStartScroller.startScroll(p_center2.x, p_center2.y, dx, dy);
+                        currentState = STATE_RELEASING_TO_START;
+                        Log.i("BBB", "STATE_RELEASING_TO_START");
+                    } else {
+                        dx = p_center2.x - p_center1.x;
+                        dy = p_center2.y - p_center1.y;
+                        toEndScroller.startScroll(p_center1.x, p_center1.y, dx, dy);
+                        currentState = STATE_RELEASING_TO_END;
+                        Log.i("BBB", "STATE_RELEASING_TO_END");
+                    }
+
+                    invalidate();
+                }
+                break;
+
+        }
+
+
+        return true;
+    }
+
+
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
 
-        canvas.drawCircle( p_1[0].x/2+p_1[1].x/2,p_1[0].y/2+p_1[1].y/2,(int)(r1/Math.sqrt(2)), paint);
-        canvas.drawCircle( p_2[2].x/2+p_2[3].x/2,p_2[2].y/2+p_2[3].y/2,(int)(r2/Math.sqrt(2)), paint);
+        if (currentState<STATE_AT_END) {
+            canvas.drawCircle(p_1[0].x / 2 + p_1[1].x / 2, p_1[0].y / 2 + p_1[1].y / 2, (int) (r1 / Math.sqrt(2)), paint);
+            canvas.drawCircle(p_2[2].x / 2 + p_2[3].x / 2, p_2[2].y / 2 + p_2[3].y / 2, (int) (r2 / Math.sqrt(2)), paint);
+            canvas.drawPath(path, paint);
+        } else {
 
+            for (int ii=0;ii<disolveX.length;ii++){
+                canvas.drawCircle( disolveX[ii]+p_2[2].x / 2 + p_2[3].x / 2,disolveY[ii]+p_2[2].y / 2 + p_2[3].y / 2,disolveR, disolvePaint);
+            }
 
-        canvas.drawPath(path,paint);
+        }
+
 
 //        canvas.drawCircle( p_center1.x,p_center1.y,r1, paint);
 //        canvas.drawCircle( p_center2.x,p_center2.y,r2, paint);
@@ -86,10 +278,10 @@ public class BesselView2 extends View {
 //        canvas.drawCircle( p_ctrl2.x,p_ctrl2.y,1, paintCircle);
     }
 
-    Paint paint,paintCircle;
+    Paint paint,paintCircle,disolvePaint;
 
     Point p_center1=new Point(50,50);
-    Point p_center2=new Point(60,80);
+    Point p_center2=new Point(50,50);
 
     Point p_ctrl1,p_ctrl2;
 
@@ -169,15 +361,6 @@ public class BesselView2 extends View {
 
 
 
-        // ---init paint
-        paint=new Paint();
-        paint.setColor(Color.rgb(120,30,20));
-        paint.setAntiAlias(true);
-
-
-        paintCircle=new Paint();
-        paintCircle.setColor(Color.rgb(20,130,20));
-        paintCircle.setAntiAlias(true);
 
     }
 
