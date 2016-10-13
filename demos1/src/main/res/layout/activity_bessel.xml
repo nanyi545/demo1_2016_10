@@ -19,11 +19,18 @@
         android:layout_height="wrap_content" />
 
     <test1.nh.com.demos1.activities.bessel.BesselView2
-        android:layout_below="@+id/bv1"
+        android:layout_toRightOf="@+id/bv1"
         android:id="@+id/bv2"
         android:background="@color/Red200"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <test1.nh.com.demos1.activities.bessel.IndicatorCiv
+        android:src="@drawable/f"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/bv1"
+        />
 
 
 
