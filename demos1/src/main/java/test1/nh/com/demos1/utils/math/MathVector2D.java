@@ -5,6 +5,54 @@ package test1.nh.com.demos1.utils.math;
  */
 public class MathVector2D {
 
+    public static class VectorF{
+
+        @Override
+        public String toString() {
+            return "("+dx+","+dy+")";
+        }
+
+        public float dx;
+        public float dy;
+        public VectorF(float dx, float dy) {
+            this.dx = dx;
+            this.dy = dy;
+        }
+
+        public float getLength(){
+            return (float) Math.sqrt(dx*dx+dy*dy);
+        }
+
+        public float dotProduct(Vector other){
+            return this.dx*other.dx+this.dy*other.dy;
+        }
+
+
+        public double getAngle(){
+            Vector v1=new Vector(100,0);
+            double cos=  (float) this.dotProduct(v1) / this.getLength()/v1.getLength();
+            if (dy>=0)
+                return (Math.acos(cos)/Math.PI*180);
+            else return (360-Math.acos(cos)/Math.PI*180);
+        }
+
+
+        public void addAngle(float offsetAngle){
+            double newAngle=getAngle()+offsetAngle;
+            double length=getLength();
+            dy = (int) (length * Math.sin(newAngle/180*Math.PI));
+            dx = (int) (length * Math.cos(newAngle/180*Math.PI));
+        }
+
+        public void scaleTo(float length){
+            float ratio=length/getLength();
+            this.dx=(dx*ratio);
+            this.dy=(dy*ratio);
+        }
+
+    }
+
+
 
     public static class Vector{
 

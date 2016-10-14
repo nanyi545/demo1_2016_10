@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -119,7 +121,10 @@ public class BesselView1 extends View {
         paintCircle.setColor(Color.rgb(20,130,20));
         paintCircle.setAntiAlias(true);
 
+
     }
+
+
 
 
     private void initData(){

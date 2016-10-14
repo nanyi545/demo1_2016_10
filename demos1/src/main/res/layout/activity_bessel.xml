@@ -25,12 +25,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+
+
     <test1.nh.com.demos1.activities.bessel.IndicatorCiv
         android:src="@drawable/f"
+        android:id="@+id/indicator_civ"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/bv1"
+        android:background="@color/Teal50"
         />
+
+    <test1.nh.com.demos1.activities.bessel.BesselView3
+        android:layout_below="@+id/indicator_civ"
+        android:id="@+id/bv3"
+        android:background="@color/Red50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 
