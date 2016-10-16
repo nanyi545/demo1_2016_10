@@ -134,9 +134,7 @@ public class IndicatorCiv extends CircleImageView {
             for (int ii=0;ii<disolveX.length;ii++){
                 canvas.drawCircle( disolveX[ii]+p_2[2].x / 2 + p_2[3].x / 2,disolveY[ii]+p_2[2].y / 2 + p_2[3].y / 2,disolveR, disolvePaint);
             }
-
         }
-
     }
 
 
@@ -163,7 +161,6 @@ public class IndicatorCiv extends CircleImageView {
 
 
     private void drawHint(Canvas canvas){
-
         if (currentState < STATE_AT_END) {
             if (currentCount > 0) {
                 if (digits == 1) {
@@ -176,7 +173,6 @@ public class IndicatorCiv extends CircleImageView {
                     canvas.drawCircle(textX + halfWidth, textRect.centerY(), circleRadius, bgPaint);
                 }
             }
-
             canvas.drawText("" + currentCount, textX, textY, textP);
         }
     }

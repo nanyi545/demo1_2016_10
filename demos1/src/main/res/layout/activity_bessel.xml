@@ -37,11 +37,13 @@
         />
 
     <test1.nh.com.demos1.activities.bessel.BesselView3
+        android:src="@drawable/f"
         android:layout_below="@+id/indicator_civ"
         android:id="@+id/bv3"
         android:background="@color/Red50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        />
 
 
 
