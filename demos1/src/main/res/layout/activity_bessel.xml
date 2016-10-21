@@ -7,9 +7,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:clipChildren="false"
 
     tools:context="test1.nh.com.demos1.activities.bessel.BesselActivity">
+
+    <!--android:clipChildren="false"-->
 
 
     <test1.nh.com.demos1.activities.bessel.BesselView1
@@ -44,6 +45,18 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         />
+
+
+
+
+    <android.support.v4.view.ViewPager
+        android:overScrollMode="never"
+        android:id="@+id/bessel_vp"
+        android:layout_below="@+id/bv3"
+        android:layout_width="180dp"
+        android:layout_height="180dp">
+
+    </android.support.v4.view.ViewPager>
 
 
 
