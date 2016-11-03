@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="test1.nh.com.demos1.activities.WebViewActivity">
+    tools:context=".activities.hybrid_test.WebViewActivity">
 
 
 

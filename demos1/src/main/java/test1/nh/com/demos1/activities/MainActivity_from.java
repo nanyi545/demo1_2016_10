@@ -34,8 +34,10 @@ import java.util.TimeZone;
 
 import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.activities.bessel.BesselActivity;
+import test1.nh.com.demos1.activities.cyclic_galary.CyclicGalaryActivity;
 import test1.nh.com.demos1.activities.fling_test.FlingTestActivity;
 import test1.nh.com.demos1.activities.horizontalScroll.HorizontalScrollActivity;
+import test1.nh.com.demos1.activities.hybrid_test.WebViewActivity;
 import test1.nh.com.demos1.activities.interactive_chart.InteractiveActivity;
 import test1.nh.com.demos1.activities.matDesign.MatDesignPanelActivity;
 import test1.nh.com.demos1.activities.range_seek.RangeSeekbarMainActivity;
@@ -531,6 +533,11 @@ public class MainActivity_from extends AppCompatActivity {
 
     public void jump_bessel_test(View v){
         BesselActivity.start(this);
+    }
+
+
+    public void jump_galaryTest(View v){
+        CyclicGalaryActivity.start(this);
     }
 
 

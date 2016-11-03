@@ -1,4 +1,4 @@
-package test1.nh.com.demos1.activities;
+package test1.nh.com.demos1.activities.hybrid_test;
 
 import android.content.Context;
 import android.content.Intent;
@@ -48,8 +48,11 @@ public class WebViewActivity extends AppCompatActivity {
 //        webView.loadUrl("file:///android_asset/www/js10_array.html");
 //        webView.loadUrl("file:///android_asset/www/js11_object.html");
 //        webView.loadUrl("file:///android_asset/www/js12_functions.html");
-        webView.loadUrl("file:///android_asset/www/js13_gettime.html");
+//        webView.loadUrl("file:///android_asset/www/js13_gettime.html");
 
+//        webView.addJavascriptInterface(new JSInterface(this), "Android"); //You will access this via Android.method(args);
+//        webView.loadUrl("file:///android_asset/www/js_call_android.html");
+        webView.loadUrl("file:///android_asset/www/test_layout.html");
     }
 
     @Override
