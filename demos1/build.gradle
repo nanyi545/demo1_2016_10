@@ -8,8 +8,8 @@ android {
     }
 // key_amap  alias:amap   pass:666666
 
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -17,7 +17,7 @@ android {
     defaultConfig {
         applicationId "test1.nh.com.demos1"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -63,7 +63,7 @@ final DEXMAKER_VERSION = '1.2'
 final RUNNER_VERSION = '0.4'
 final ESPRESSO_VERSION = '2.2'
 final DAGGER_VERSION = '2.0'
-final ASDK_VERSION = '23'
+final ASDK_VERSION = '25'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
