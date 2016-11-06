@@ -22,6 +22,14 @@
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
     </style>
 
+    <style name="TestTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+
+
+
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView"></style>
 
 

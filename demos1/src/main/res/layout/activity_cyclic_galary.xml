@@ -15,10 +15,6 @@
         android:background="@color/Blue100"
         android:layout_above="@+id/bottom_navigation"
         >
-
-
-
-
     </FrameLayout>
 
 

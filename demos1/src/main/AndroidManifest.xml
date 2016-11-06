@@ -210,7 +210,10 @@
         <activity android:name=".activities.test3d.Test3dActivity" />
         <activity android:name=".activities.fling_test.FlingTestActivity" />
         <activity android:name=".activities.bessel.BesselActivity" />
-        <activity android:name=".activities.cyclic_galary.CyclicGalaryActivity"></activity>
+        <activity android:name=".activities.cyclic_galary.CyclicGalaryActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/TestTheme"></activity>
+
     </application>
 
 </manifest>

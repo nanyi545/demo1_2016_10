@@ -33,6 +33,12 @@
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
     </style>
 
+    <style name="TestTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+
+
+
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView"></style>
 
 

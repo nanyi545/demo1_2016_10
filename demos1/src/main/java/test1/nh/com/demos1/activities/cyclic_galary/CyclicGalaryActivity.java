@@ -5,6 +5,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -53,14 +55,18 @@ public class CyclicGalaryActivity extends AppCompatActivity {
         fragment2=new FragmentSecond();
         fragment3=new FragmentThird();
         fragment4=new FragmentFour();
-        current=fragment1;
 
+
+        current=fragment1;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.add(R.id.home_fragment, fragment1,tags[0]).commit();
 
 
 
+
     }
+
+
 
 
     private void switchContent( Fragment to, String tag) {
