@@ -38,6 +38,7 @@ public class FragmentFirstPage extends Fragment {
     }
 
     ViewPager viewPager;
+    VpIndicator indicator;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +50,7 @@ public class FragmentFirstPage extends Fragment {
         fragments.add(new ImaFragment(R.drawable.f));
 
         viewPager = (ViewPager) v.findViewById(R.id.f1_vp);
-
+        indicator= (VpIndicator) v.findViewById(R.id.vp_indicator);
         AppCompatActivity host= (AppCompatActivity) getActivity();
         MyVPAdapter adapter = new MyVPAdapter(host.getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
@@ -57,6 +58,7 @@ public class FragmentFirstPage extends Fragment {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i("BBB","onPageScrolled:  position:"+position+"   positionOffset:"+positionOffset+"   positionOffsetPixels:"+positionOffsetPixels);
+//                indicator.update(positionOffset);
             }
 
             @Override
