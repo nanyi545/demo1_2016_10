@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\ASprojects\\station_2_23\\demos_2016_10_10\\app0914\\build\\intermediates\\res\\merged\\debug\\values-port\\values-port.xml",
+        "outputFile": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\values-port\\values-port.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 106
                 },
                 "from": {
-                    "file": "D:\\ASprojects\\station_2_23\\demos_2016_10_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\values-port\\values-port.xml",
+                    "file": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\values-port\\values-port.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

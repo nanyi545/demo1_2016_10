@@ -68,6 +68,8 @@ final ASDK_VERSION = '25'
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
+
+
     compile "com.android.support:support-v4:${ASDK_VERSION}.+"
     compile "com.android.support:appcompat-v7:${ASDK_VERSION}.+"
     compile "com.android.support:recyclerview-v7:${ASDK_VERSION}.+"
@@ -185,5 +187,7 @@ dependencies {
     compile 'biz.kasual:materialnumberpicker:1.2.1'
 
 //    compile 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0'
+    compile 'com.roughike:bottom-bar:2.0.2'
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.3.0'
 
 }
