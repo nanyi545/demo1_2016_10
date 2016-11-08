@@ -2,11 +2,13 @@ package test1.nh.com.demos1.activities.cyclic_galary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
@@ -49,6 +51,11 @@ public class ScrollMenu extends ViewGroup {
         heightPixels=itemWidth;
 
         Log.i("ddd","widthPixels:"+widthPixels+"   heightPixels:"+heightPixels+"  "+displaymetrics.density);
+
+        ViewConfiguration configuration = ViewConfiguration.get(getContext());
+        // 获取TouchSlop值
+        mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);
+
     }
 
 
@@ -60,6 +67,15 @@ public class ScrollMenu extends ViewGroup {
 
 
     private Scroller mScroller;
+
+
+
+    private int mTouchSlop;
+
+
+
+
+
 
 
     @Override
@@ -77,6 +93,14 @@ public class ScrollMenu extends ViewGroup {
 
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
+
+
+                if (Math.abs(deltaY)>0 ) {
+                    getParent().requestDisallowInterceptTouchEvent(true);   // this makes sure the up/down scroll in ScrollMenu does not affect the scrollview
+                }else {
+                }
+
+
                 float scrollByStart = deltaX;
                 if (getScrollX() - deltaX < leftBorder) {
                     // when try to scroll beyond start
@@ -102,6 +126,10 @@ public class ScrollMenu extends ViewGroup {
                 //-- full screen scroll --
 //                int targetIndex = (getScrollX() + getWidth() / 2) / getWidth();
 //                int dx = targetIndex * getWidth() - getScrollX();
+
+                getParent().requestDisallowInterceptTouchEvent(false);
+                Log.i("BBB","-------");
+
 
                 //-- separate scroll
                 int targetIndex = (getScrollX() +  itemWidth / 2) / itemWidth;
@@ -169,7 +197,8 @@ public class ScrollMenu extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
             // 测量每一个子控件的大小
-            measureChild(childView, widthMeasureSpec, heightMeasureSpec);
+            if (childView instanceof  ScrollMenuItem ) ((ScrollMenuItem) childView).resize(itemWidth,itemWidth);
+            else measureChild(childView, widthMeasureSpec, heightMeasureSpec);
         }
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 

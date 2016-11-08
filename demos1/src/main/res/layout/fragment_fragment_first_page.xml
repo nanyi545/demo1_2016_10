@@ -123,14 +123,14 @@
             android:layout_height="wrap_content"
             >
             <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenu
+                android:id="@+id/my_scroll_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/Blue300"
                 >
-                <ImageView
+                <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@color/Red50"
                     />
                 <ImageView
                     android:layout_width="30dp"
