@@ -33,14 +33,16 @@ public class VpIndicator extends View {
     float mDensity;
 
     int totalCounts=3;
-    private static final int squareSizeInDp=20;
-    private static final int circleRadiusInDp=6;
+    private static final int squareSizeInDp=40;
+    private static final int circleRadiusInDp=12;
     int circleRadiusInPx=10;
 
 
 
     Paint bgCirclePaint;
     Paint colorPaint;
+    Paint testPaint;
+
 
     private void init(){
         mDensity = getResources().getDisplayMetrics().density;
@@ -53,6 +55,10 @@ public class VpIndicator extends View {
         colorPaint = new Paint();
         colorPaint.setAntiAlias(true);
         colorPaint.setColor(Color.rgb(255,20,20));
+
+        testPaint = new Paint();
+        testPaint.setAntiAlias(true);
+        testPaint.setColor(Color.rgb(20,255,20));
 
         path =new Path();
 
@@ -72,7 +78,7 @@ public class VpIndicator extends View {
         //MUST call this to store the measurements
         setMeasuredDimension(widthSize, heightSize);
         initFixedLabelPositions();
-        preInitPath(0.5f);
+        preInitPath(0,0f);
         initPath();
     }
 
@@ -112,17 +118,26 @@ public class VpIndicator extends View {
         canvas.drawPath(path, colorPaint);
         canvas.drawCircle(p1.x,p1.y,r1,colorPaint);
         canvas.drawCircle(p2.x,p2.y,r2,colorPaint);
+
+//        canvas.drawCircle(centerPoint.x,centerPoint.y,1f,testPaint);
+//        canvas.drawCircle(helperPoint1.x,helperPoint1.y,1f,testPaint);
+//        canvas.drawCircle(helperPoint2.x,helperPoint2.y,1f,testPaint);
+//        canvas.drawCircle(helperPoint3.x,helperPoint3.y,1f,testPaint);
+//        canvas.drawCircle(helperPoint4.x,helperPoint4.y,1f,testPaint);
     }
 
 
     Path path;
     PointF p1=new PointF(),p2=new PointF();
     float r1,r2;
-    private void preInitPath(float progress){
 
 
-        PointF start= fixedLabels[0];
-        PointF end= fixedLabels[1];
+
+    private void preInitPath(int position,float progress){
+
+
+        PointF start= fixedLabels[position];
+        PointF end= fixedLabels[position+1];
 
         p1.y=start.y;
         p2.y=start.y;
@@ -141,10 +156,10 @@ public class VpIndicator extends View {
         r1=(1f-progress)*circleRadiusInPx;
         r2=(progress)*circleRadiusInPx;
 
-
     }
 
-
+    //---for debugging....
+    PointF centerPoint,helperPoint1,helperPoint2,helperPoint3,helperPoint4;
 
 
     private void initPath(){
@@ -160,21 +175,34 @@ public class VpIndicator extends View {
         r2=this.r2;
 
 
-        PointF temp1=new PointF((p1.x+p2.x)/2,(p1.y+p2.y)/2);
+
+        float ratio=r1/(r1+r2);
+        PointF temp1=new PointF((p2.x-p1.x)*ratio+p1.x,(p2.y-p1.y)*ratio+p1.y);
+        centerPoint=temp1;
+
+
         PointF[] helperPoints_12=getTangentPoints(r1,p1,temp1);
+        helperPoint1=helperPoints_12[0];
+        helperPoint2=helperPoints_12[1];
 
         PointF[] helperPoints_21=getTangentPoints(r2,p2,temp1);
+        helperPoint3=helperPoints_21[0];
+        helperPoint4=helperPoints_21[1];
 
-
+        path=new Path();
         path.moveTo(helperPoints_12[0].x, helperPoints_12[0].y);
         path.quadTo(temp1.x,temp1.y,helperPoints_21[0].x, helperPoints_21[0].y);
         path.lineTo(helperPoints_21[1].x, helperPoints_21[1].y);
         path.quadTo(temp1.x,temp1.y,helperPoints_12[1].x, helperPoints_12[1].y);
+
     }
 
 
-    public void update(float progress){
-        preInitPath(progress);
+    public void update(int position,float progress){
+        if(position>=(totalCounts-1)){
+            return;
+        }
+        preInitPath(position,progress);
         initPath();
         invalidate();
     }

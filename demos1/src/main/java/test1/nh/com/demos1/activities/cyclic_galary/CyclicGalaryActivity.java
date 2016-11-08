@@ -94,7 +94,7 @@ public class CyclicGalaryActivity extends AppCompatActivity {
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
 
 
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
 
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
@@ -121,11 +121,18 @@ public class CyclicGalaryActivity extends AppCompatActivity {
                 .setText("15")
                 .setHideOnSelect(false);
 
+//        bottomNavigationBar
+//                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_up, "首页").setInactiveIconResource(R.drawable.ic_action_pan_down).setActiveColorResource(R.color.Blue400))
+//                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_down, "订单").setInactiveIconResource(R.drawable.ic_action_pan_up).setBadgeItem(numberBadgeItem).setActiveColorResource(R.color.Teal400))
+//                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_left, "发现").setInactiveIconResource(R.drawable.ic_action_pan_right).setActiveColorResource(R.color.Purple400))
+//                .addItem(new BottomNavigationItem(R.drawable.ic_action_zoom_out, "我的").setInactiveIconResource(R.drawable.ic_action_zoom_in).setActiveColorResource(R.color.Orange400))
+//                .initialise();
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_up, "首页").setInactiveIconResource(R.drawable.ic_action_pan_down).setActiveColorResource(R.color.Blue400))
-                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_down, "订单").setInactiveIconResource(R.drawable.ic_action_pan_up).setBadgeItem(numberBadgeItem).setActiveColorResource(R.color.Teal400))
-                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_left, "发现").setInactiveIconResource(R.drawable.ic_action_pan_right).setActiveColorResource(R.color.Purple400))
-                .addItem(new BottomNavigationItem(R.drawable.ic_action_zoom_out, "我的").setInactiveIconResource(R.drawable.ic_action_zoom_in).setActiveColorResource(R.color.Orange400))
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_up, "首页").setInactiveIconResource(R.drawable.ic_action_pan_down))
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_down, "订单").setInactiveIconResource(R.drawable.ic_action_pan_up).setBadgeItem(numberBadgeItem))
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_pan_left, "发现").setInactiveIconResource(R.drawable.ic_action_pan_right))
+                .addItem(new BottomNavigationItem(R.drawable.ic_action_zoom_out, "我的").setInactiveIconResource(R.drawable.ic_action_zoom_in))
+                .setActiveColor(R.color.Gray500)
                 .initialise();
 
     }

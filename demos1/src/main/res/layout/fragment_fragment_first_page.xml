@@ -8,30 +8,13 @@
         android:id="@+id/f1_coordinator"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
 
         <!--android:fitsSystemWindows="true"-->
 
 
-        <android.support.v4.widget.NestedScrollView
-        android:background="@color/Teal700"
-        android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-
-        </RelativeLayout>
-
-
-    </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.AppBarLayout
             android:fitsSystemWindows="true"
@@ -43,7 +26,6 @@
 
             <!--android:fitsSystemWindows="true"-->
             <android.support.design.widget.CollapsingToolbarLayout
-                android:fitsSystemWindows="true"
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -66,19 +48,17 @@
 
 
                     <RelativeLayout
-                        android:background="@color/Teal900"
                         android:layout_marginBottom="40dp"
                         android:layout_alignParentBottom="true"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp">
+                        android:layout_height="40dp">
 
                         <test1.nh.com.demos1.activities.cyclic_galary.VpIndicator
                             android:id="@+id/vp_indicator"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content" />
 
                     </RelativeLayout>
 
@@ -130,7 +110,75 @@
         </android.support.design.widget.AppBarLayout>
 
 
-    </android.support.design.widget.CoordinatorLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:background="@color/Teal700"
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_gravity="fill_vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenu
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Blue300"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red50"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red100"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red200"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red300"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red400"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red500"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red600"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@color/Red700"
+                    />
+
+            </test1.nh.com.demos1.activities.cyclic_galary.ScrollMenu>
+
+
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
 
 
 

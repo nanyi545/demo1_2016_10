@@ -58,7 +58,7 @@ public class FragmentFirstPage extends Fragment {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i("BBB","onPageScrolled:  position:"+position+"   positionOffset:"+positionOffset+"   positionOffsetPixels:"+positionOffsetPixels);
-//                indicator.update(positionOffset);
+                indicator.update(position,positionOffset);
             }
 
             @Override
