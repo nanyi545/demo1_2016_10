@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Scroller;
 
 /**
@@ -41,14 +43,19 @@ public class ScrollMenu extends ViewGroup {
     }
 
 
+    float mDensity;
+
     private void init(){
+        ScrollMenu.this.setVisibility(View.INVISIBLE);
         mScroller = new Scroller(getContext());
+        initScroller = new Scroller(getContext(),new OvershootInterpolator());
         Activity host= (Activity) getContext();
         DisplayMetrics displaymetrics = new DisplayMetrics();
         host.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         widthPixels = displaymetrics.widthPixels;
         itemWidth= widthPixels/5;
         heightPixels=itemWidth;
+        mDensity=displaymetrics.density;
 
         Log.i("ddd","widthPixels:"+widthPixels+"   heightPixels:"+heightPixels+"  "+displaymetrics.density);
 
@@ -67,13 +74,26 @@ public class ScrollMenu extends ViewGroup {
 
 
     private Scroller mScroller;
-
+    private Scroller initScroller;
 
 
     private int mTouchSlop;
 
 
 
+
+    private int initOffsetInDp=300;
+
+    public void scrollIn(){
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ScrollMenu.this.setVisibility(View.VISIBLE);
+                initScroller.startScroll(-(int) (initOffsetInDp*mDensity), 0, (int) (initOffsetInDp*mDensity), 0,1200);
+                invalidate();
+            }
+        },700);
+    }
 
 
 
@@ -94,10 +114,10 @@ public class ScrollMenu extends ViewGroup {
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
 
-
                 if (Math.abs(deltaY)>0 ) {
                     getParent().requestDisallowInterceptTouchEvent(true);   // this makes sure the up/down scroll in ScrollMenu does not affect the scrollview
                 }else {
+
                 }
 
 
@@ -173,22 +193,12 @@ public class ScrollMenu extends ViewGroup {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
             postInvalidate();
         }
+        if (initScroller.computeScrollOffset()) {
+            scrollTo(initScroller.getCurrX(), mScroller.getCurrY());
+            postInvalidate();
+        }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -197,8 +207,11 @@ public class ScrollMenu extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
             // 测量每一个子控件的大小
-            if (childView instanceof  ScrollMenuItem ) ((ScrollMenuItem) childView).resize(itemWidth,itemWidth);
-            else measureChild(childView, widthMeasureSpec, heightMeasureSpec);
+             measureChild(childView, widthMeasureSpec, heightMeasureSpec);
+            if (childView instanceof  ScrollMenuItem ) {
+                ((ScrollMenuItem) childView).resize(itemWidth,itemWidth);
+            }
+
         }
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 

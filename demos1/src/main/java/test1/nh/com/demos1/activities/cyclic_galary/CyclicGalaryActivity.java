@@ -8,9 +8,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,14 +19,12 @@ import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.BottomBarTab;
 
 import java.lang.reflect.Field;
 
 import test1.nh.com.demos1.R;
 
 public class CyclicGalaryActivity extends AppCompatActivity {
-
 
 
     public static void start(Context c){
@@ -56,13 +51,14 @@ public class CyclicGalaryActivity extends AppCompatActivity {
         fragmentHolder= (FrameLayout) findViewById(R.id.home_fragment);
 
 
-        fragment1 =new FragmentFirstPage();
+        fragment1=new FragmentFirstPage();
         fragment2=new FragmentSecond();
         fragment3=new FragmentThird();
         fragment4=new FragmentFour();
 
 
         current=fragment1;
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.add(R.id.home_fragment, fragment1,tags[0]).commit();
 
@@ -153,68 +149,69 @@ public class CyclicGalaryActivity extends AppCompatActivity {
 
 
 
-    private void initBottomNavigation(){
-        BottomNavigationView bottomNavigationView= (BottomNavigationView) findViewById(R.id.bottom_navigation);
-
-
-        Field f = null;
-        try {
-            f = bottomNavigationView.getClass().getDeclaredField("mMenuView");
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-        f.setAccessible(true);
-        BottomNavigationMenuView menuView=null;
-        try {
-            menuView = (BottomNavigationMenuView) f.get(bottomNavigationView); //IllegalAccessException
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            f=menuView.getClass().getDeclaredField("mButtons");
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-        f.setAccessible(true);
-        BottomNavigationItemView[] mButtons=null;
-        try {
-            mButtons = (BottomNavigationItemView[]) f.get(menuView); //IllegalAccessException
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        for(int i=0;i<mButtons.length;i++){
-            mButtons[i].setShiftingMode(false);
-            mButtons[i].setChecked(true);
-            mButtons[i].setChecked(false);
-        }
-        mButtons[0].setChecked(true);
-
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_favorites:
-                                switchContent(fragment1,tags[0]);
-                                break;
-                            case R.id.action_schedules:
-                                switchContent(fragment2,tags[1]);
-                                break;
-                            case R.id.action_music:
-                                switchContent(fragment3,tags[2]);
-                                break;
-                            case R.id.action_my:
-                                switchContent(fragment4,tags[3]);
-                                break;
-                        }
-                        return false;
-                    }
-                });
-
-    }
+    // need design lib 25
+//    private void initBottomNavigation(){
+//        BottomNavigationView bottomNavigationView= (BottomNavigationView) findViewById(R.id.bottom_navigation);
+//
+//
+//        Field f = null;
+//        try {
+//            f = bottomNavigationView.getClass().getDeclaredField("mMenuView");
+//        } catch (NoSuchFieldException e) {
+//            e.printStackTrace();
+//        }
+//        f.setAccessible(true);
+//        BottomNavigationMenuView menuView=null;
+//        try {
+//            menuView = (BottomNavigationMenuView) f.get(bottomNavigationView); //IllegalAccessException
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        try {
+//            f=menuView.getClass().getDeclaredField("mButtons");
+//        } catch (NoSuchFieldException e) {
+//            e.printStackTrace();
+//        }
+//        f.setAccessible(true);
+//        BottomNavigationItemView[] mButtons=null;
+//        try {
+//            mButtons = (BottomNavigationItemView[]) f.get(menuView); //IllegalAccessException
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
+//
+//        for(int i=0;i<mButtons.length;i++){
+//            mButtons[i].setShiftingMode(false);
+//            mButtons[i].setChecked(true);
+//            mButtons[i].setChecked(false);
+//        }
+//        mButtons[0].setChecked(true);
+//
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(
+//                new BottomNavigationView.OnNavigationItemSelectedListener() {
+//                    @Override
+//                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                        switch (item.getItemId()) {
+//                            case R.id.action_favorites:
+//                                switchContent(fragment1,tags[0]);
+//                                break;
+//                            case R.id.action_schedules:
+//                                switchContent(fragment2,tags[1]);
+//                                break;
+//                            case R.id.action_music:
+//                                switchContent(fragment3,tags[2]);
+//                                break;
+//                            case R.id.action_my:
+//                                switchContent(fragment4,tags[3]);
+//                                break;
+//                        }
+//                        return false;
+//                    }
+//                });
+//
+//    }
 
 }

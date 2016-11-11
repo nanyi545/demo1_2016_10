@@ -111,7 +111,7 @@
 
 
     <android.support.v4.widget.NestedScrollView
-        android:background="@color/Teal700"
+        android:background="@color/White"
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -126,46 +126,45 @@
                 android:id="@+id/my_scroll_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/Blue300"
+                android:background="@color/White"
                 >
                 <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    app:imgId="@drawable/ic_account_balance_black_24dp"
+                    app:title="保姆"
                     />
-                <ImageView
+                <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@color/Red100"
+                    app:imgId="@drawable/ic_action_pan_down"
+                    app:title="保洁"
+
                     />
-                <ImageView
+                <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@color/Red200"
+                    app:imgId="@drawable/ic_action_pan_right"
+                    app:title="搬家"
                     />
-                <ImageView
+                <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@color/Red300"
+                    app:imgId="@drawable/ic_action_pan_up"
+                    app:title="护工"
                     />
-                <ImageView
+                <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@color/Red400"
+                    app:imgId="@drawable/ic_action_pan_down"
+                    app:title="育婴师"
                     />
-                <ImageView
+                <test1.nh.com.demos1.activities.cyclic_galary.ScrollMenuItem
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@color/Red500"
-                    />
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@color/Red600"
-                    />
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@color/Red700"
+                    app:imgId="@drawable/ic_alarm_add_black_24dp"
+                    app:title="月嫂"
+
                     />
 
             </test1.nh.com.demos1.activities.cyclic_galary.ScrollMenu>

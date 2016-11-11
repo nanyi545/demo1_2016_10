@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/Amber200"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@color/Teal300"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_widthPercent="50%"
+        app:layout_heightPercent="50%"
+        app:layout_marginTopPercent="25%"
         android:layout_centerHorizontal="true"
         android:id="@+id/item_icon"
         android:src="@drawable/ic_account_balance_black_24dp"
@@ -23,4 +27,4 @@
         />
 
 
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>
