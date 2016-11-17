@@ -56,7 +56,6 @@ public class CyclicGalaryActivity extends AppCompatActivity {
         fragment3=new FragmentThird();
         fragment4=new FragmentFour();
 
-
         current=fragment1;
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
