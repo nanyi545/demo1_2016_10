@@ -9,4 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="test1.nh.com.demos1.activities.generic_test.GenericTestActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:background="@color/Red300"
+        android:id="@+id/generic_test_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>

@@ -72,6 +72,8 @@ public class FragmentFirstPage extends Fragment {
             }
         });
 
+        ScrollMenu menu= (ScrollMenu) v.findViewById(R.id.my_scroll_menu);
+        menu.scrollIn();
         return v;
     }
 

@@ -491,6 +491,23 @@
             android:onClick="jump_galaryTest"
             android:text="cyclic galary 测试"/>
 
+        <Button
+            android:id="@+id/button63"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button62"
+            android:onClick="jump_tabTest"
+            android:text="tablayout 测试"/>
+
+
+
+        <Button
+            android:id="@+id/button64"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button63"
+            android:onClick="jump_genericTest"
+            android:text="泛型测试"/>
 
 
     </RelativeLayout>

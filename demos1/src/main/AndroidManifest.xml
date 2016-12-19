@@ -215,6 +215,8 @@
             android:theme="@style/TestTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activities.generic_test.GenericTestActivity"></activity>
+        <activity android:name=".activities.tab_layout_viewpager.TestTabActivity"></activity>
+
     </application>
 
 </manifest>

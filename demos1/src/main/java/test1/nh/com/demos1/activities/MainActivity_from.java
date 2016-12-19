@@ -36,12 +36,14 @@ import test1.nh.com.demos1.R;
 import test1.nh.com.demos1.activities.bessel.BesselActivity;
 import test1.nh.com.demos1.activities.cyclic_galary.CyclicGalaryActivity;
 import test1.nh.com.demos1.activities.fling_test.FlingTestActivity;
+import test1.nh.com.demos1.activities.generic_test.GenericTestActivity;
 import test1.nh.com.demos1.activities.horizontalScroll.HorizontalScrollActivity;
 import test1.nh.com.demos1.activities.hybrid_test.WebViewActivity;
 import test1.nh.com.demos1.activities.interactive_chart.InteractiveActivity;
 import test1.nh.com.demos1.activities.matDesign.MatDesignPanelActivity;
 import test1.nh.com.demos1.activities.range_seek.RangeSeekbarMainActivity;
 import test1.nh.com.demos1.activities.selectTime.SelectTimeActivity;
+import test1.nh.com.demos1.activities.tab_layout_viewpager.TestTabActivity;
 import test1.nh.com.demos1.activities.test3d.Test3dActivity;
 import test1.nh.com.demos1.activities.time_picker.TimePickerActivity;
 import test1.nh.com.demos1.activityManagerActivity.ActManagerActivity;
@@ -538,6 +540,14 @@ public class MainActivity_from extends AppCompatActivity {
 
     public void jump_galaryTest(View v){
         CyclicGalaryActivity.start(this);
+    }
+
+    public void jump_tabTest(View v){
+        TestTabActivity.start(this);
+    }
+
+    public void jump_genericTest(View v){
+        GenericTestActivity.start(this);
     }
 
 
