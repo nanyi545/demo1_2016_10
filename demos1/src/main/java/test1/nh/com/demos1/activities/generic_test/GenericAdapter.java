@@ -14,13 +14,7 @@ import test1.nh.com.demos1.R;
 /**
  * Created by Administrator on 2016/12/19.
  */
-public class GenericAdapter<T>  extends RecyclerView.Adapter< GenericAdapter.ViewHolder > {
-
-//    private T t;
-//    public T getT(){return t;}
-//    public void setT(T t){
-//        this.t=t;
-//    }
+public class GenericAdapter<T>  extends RecyclerView.Adapter< GenericAdapter<T>.ViewHolder > {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -30,11 +24,18 @@ public class GenericAdapter<T>  extends RecyclerView.Adapter< GenericAdapter.Vie
         }
     }
 
-    ArrayList<String> data;
+    ArrayList<T> data;
 
-    public GenericAdapter(ArrayList<String> data) {
+    public GenericAdapter(ArrayList<T> data,Formatter<T> formatter ) {
         this.data = data;
+        this.formatter=formatter;
     }
+
+    public interface Formatter<T>{
+        String format(T t);
+    }
+
+    private Formatter<T> formatter;
 
 
     @Override
@@ -48,7 +49,7 @@ public class GenericAdapter<T>  extends RecyclerView.Adapter< GenericAdapter.Vie
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.dispay.setText(data.get(position));
+        holder.dispay.setText(formatter.format(data.get(position)));
     }
 
     @Override

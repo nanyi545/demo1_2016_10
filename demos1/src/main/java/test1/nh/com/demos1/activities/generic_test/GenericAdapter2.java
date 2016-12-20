@@ -13,17 +13,16 @@ import test1.nh.com.demos1.R;
 /**
  * Created by Administrator on 2016/12/19.
  */
-public class GenericAdapter2 extends GenericAbsAdapter<GenericAdapter2.ViewHolder> {
+
+public class GenericAdapter2<T> extends GenericAbsAdapter<GenericAdapter2<T>.ViewHolder,T> {
 
 
-
-    private ArrayList<Integer> data;
-    Formatter<Integer> formatter;
+    Formatter<T> formatter;
 
 
-    public GenericAdapter2(Formatter<Integer> formatter,ArrayList<Integer> data) {
+    public GenericAdapter2(Formatter<T> formatter,ArrayList<T> data) {
         this.formatter=formatter;
-        this.data=data;
+        setData(data);
     }
 
 
@@ -40,12 +39,12 @@ public class GenericAdapter2 extends GenericAbsAdapter<GenericAdapter2.ViewHolde
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.dispay.setText(formatter.format(data.get(position)));
+        holder.dispay.setText(formatter.format(getData().get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return getData().size();
     }
 
 

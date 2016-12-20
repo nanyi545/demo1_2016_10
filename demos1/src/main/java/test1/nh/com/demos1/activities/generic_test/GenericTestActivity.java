@@ -33,11 +33,17 @@ public class GenericTestActivity extends AppCompatActivity {
         test.setLayoutManager(new LinearLayoutManager(this));
 
 
-//        //  use of non-generic adapter
         ArrayList<String> data=new ArrayList();
         data.add("123123");data.add("adfasd");data.add("asdfa");data.add("asdfads");data.add("dafd");
-        GenericAdapter<Integer> adapter=new GenericAdapter(data);
+        GenericAdapter<String> adapter=new GenericAdapter(data, new GenericAdapter.Formatter<String>() {
+            @Override
+            public String format(String o) {
+                return "lala  "+o;
+            }
+        });
         test.setAdapter(adapter);
+
+
 
 //        ArrayList<Integer> data=new ArrayList();
 //        data.add(1);data.add(12);data.add(25);data.add(66);data.add(9090);
@@ -48,7 +54,21 @@ public class GenericTestActivity extends AppCompatActivity {
 //            }
 //        },data);
 
-        test.setAdapter(adapter);
+
+
+//        ArrayList<String> data2=new ArrayList();
+//        data2.add("aasdf");data2.add("dsafdf");data2.add("dasfdsaf");data2.add("adfads");data2.add("sadfasd");
+//        GenericAdapter2<String> adapter=new GenericAdapter2( new GenericAbsAdapter.Formatter<String>() {
+//            @Override
+//            public String format(String t) {
+//                return "str:"+t;
+//            }
+//        },data2);
+
+
+
+
+//        test.setAdapter(adapter);
 
 
     }

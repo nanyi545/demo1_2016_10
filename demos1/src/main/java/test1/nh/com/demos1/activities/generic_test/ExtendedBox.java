@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by Administrator on 2016/12/19.
  */
-public class ExtendedBox<T,V> extends Box<T> {
+public class ExtendedBox<T,V > extends Box<T> {
 
 
     private V v;
