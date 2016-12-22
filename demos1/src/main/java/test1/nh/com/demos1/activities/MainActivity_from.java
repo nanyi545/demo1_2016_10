@@ -37,6 +37,7 @@ import test1.nh.com.demos1.activities.bessel.BesselActivity;
 import test1.nh.com.demos1.activities.cyclic_galary.CyclicGalaryActivity;
 import test1.nh.com.demos1.activities.fling_test.FlingTestActivity;
 import test1.nh.com.demos1.activities.generic_test.GenericTestActivity;
+import test1.nh.com.demos1.activities.gesture_pass.GesturePassWordActivity;
 import test1.nh.com.demos1.activities.horizontalScroll.HorizontalScrollActivity;
 import test1.nh.com.demos1.activities.hybrid_test.WebViewActivity;
 import test1.nh.com.demos1.activities.interactive_chart.InteractiveActivity;
@@ -391,6 +392,7 @@ public class MainActivity_from extends AppCompatActivity {
         Intent i1=new Intent(this,CustomViewActivity.class);
         startActivity(i1);
     }
+
     public void jump_tab2(View view){
         Intent i1=new Intent(this,CustomViewActivity2.class);
         startActivity(i1);
@@ -548,6 +550,11 @@ public class MainActivity_from extends AppCompatActivity {
 
     public void jump_genericTest(View v){
         GenericTestActivity.start(this);
+    }
+
+
+    public void jump_gesture_pwdt(View v){
+        GesturePassWordActivity.start(this);
     }
 
 

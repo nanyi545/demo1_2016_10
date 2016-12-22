@@ -49,10 +49,18 @@ public class WebViewActivity extends AppCompatActivity {
 //        webView.loadUrl("file:///android_asset/www/js11_object.html");
 //        webView.loadUrl("file:///android_asset/www/js12_functions.html");
 //        webView.loadUrl("file:///android_asset/www/js13_gettime.html");
+//        webView.loadUrl("file:///android_asset/www/js14_functions.html");   // TODO MODIFY THIS .....
+
+//        webView.addJavascriptInterface(new JSInterface(this), "Android");
+//        webView.loadUrl("file:///android_asset/www/js15_array.html");
+//        webView.loadUrl("file:///android_asset/www/js16_calculator.html");
+//        webView.loadUrl("file:///android_asset/www/js17_time.html");
+//        webView.loadUrl("file:///android_asset/www/js18_string.html");
+        webView.loadUrl("file:///android_asset/www/js19_clock.html");
 
 //        webView.addJavascriptInterface(new JSInterface(this), "Android"); //You will access this via Android.method(args);
 //        webView.loadUrl("file:///android_asset/www/js_call_android.html");
-        webView.loadUrl("file:///android_asset/www/test_layout.html");
+//        webView.loadUrl("file:///android_asset/www/test_layout.html");
     }
 
     @Override

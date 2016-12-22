@@ -28,8 +28,6 @@
     </style>
 
 
-
-
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView"></style>
 
 

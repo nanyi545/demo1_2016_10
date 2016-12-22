@@ -510,6 +510,15 @@
             android:text="泛型测试"/>
 
 
+        <Button
+            android:id="@+id/button65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button64"
+            android:onClick="jump_gesture_pwdt"
+            android:text="gesture pwd 测试"/>
+
+
     </RelativeLayout>
 
 </ScrollView>

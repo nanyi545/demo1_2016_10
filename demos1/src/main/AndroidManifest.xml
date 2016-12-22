@@ -214,9 +214,12 @@
             android:name=".activities.cyclic_galary.CyclicGalaryActivity"
             android:theme="@style/TestTheme"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.generic_test.GenericTestActivity"></activity>
-        <activity android:name=".activities.tab_layout_viewpager.TestTabActivity"></activity>
-
+        <activity android:name=".activities.generic_test.GenericTestActivity" />
+        <activity android:name=".activities.tab_layout_viewpager.TestTabActivity" />
+        <activity
+            android:name=".activities.gesture_pass.GesturePassWordActivity"
+            android:label="@string/title_activity_gesture_pass_word"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

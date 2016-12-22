@@ -28,24 +28,22 @@ public class TestMeasureView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-
-        //Get the width measurement
-        int widthSize = View.resolveSize(getDesiredWidth(), widthMeasureSpec);
+        int widthSize = View.resolveSize(getMinWidth(), widthMeasureSpec);
+//        int widthSize=measureDimension(getMinWidth(),widthMeasureSpec,"width  ");
 
         //Get the height measurement
-        int heightSize = View.resolveSize(getDesiredHeight(), heightMeasureSpec);
+        int heightSize = View.resolveSize(getMinHeight(), heightMeasureSpec);
 
         //MUST call this to store the measurements
         setMeasuredDimension(widthSize, heightSize);
 
-
     }
 
-    private int getDesiredHeight() {
+    private int getMinHeight() {
         return 150;
     }
 
-    private int getDesiredWidth() {
+    private int getMinWidth() {
         return 150;
     }
 
@@ -59,25 +57,23 @@ public class TestMeasureView extends View {
 
         String specModeStr="";
 
-
-
         switch (specMode){
             case MeasureSpec.UNSPECIFIED:
-                specModeStr="EXACTLY";
+                specModeStr="UNSPECIFIED";
                 result = defaultSize;
                 break;
-            case MeasureSpec.AT_MOST:
+            case MeasureSpec.AT_MOST:   //  -----> wrap_content   !!!!!
                 specModeStr="AT_MOST";
                 result = Math.min(defaultSize, specSize);
                 break;
-            case MeasureSpec.EXACTLY:
+            case MeasureSpec.EXACTLY:   // ---->  1  specifying size    2  match_parent  !!!!!!
                 specModeStr="EXACTLY";
-                result=specSize;
+                result=specSize;   // spec Size is   in unit px  !!!
                 break;
         }
 
 
-        Log.i("ccc",type+"   specMode:"+specModeStr+"   specSize:"+specSize);
+        Log.i("eee",type+"   specMode:"+specModeStr+"   specSize:"+specSize+"   measured size:"+result);   // spec Size in px
         return result;
     }
 
