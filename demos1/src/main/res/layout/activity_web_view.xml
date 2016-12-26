@@ -46,7 +46,7 @@
         android:id="@+id/my_web_view"
         android:background="@color/Teal100"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         />
 
 

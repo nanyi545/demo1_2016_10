@@ -57,7 +57,10 @@ public class WebViewActivity extends AppCompatActivity {
 //        webView.loadUrl("file:///android_asset/www/js17_time.html");
 //        webView.loadUrl("file:///android_asset/www/js18_string.html");
 //        webView.loadUrl("file:///android_asset/www/js19_clock.html");
-        webView.loadUrl("file:///android_asset/www/js20_changetable.html");
+//        webView.loadUrl("file:///android_asset/www/js20_changetable.html");
+//        webView.loadUrl("file:///android_asset/www/js21_selection_tabs.html");
+//        webView.loadUrl("file:///android_asset/www/jq1_test.html");
+        webView.loadUrl("file:///android_asset/www/jq2_selectors.html");  // 层级 selector
 
 
 
@@ -72,6 +75,7 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
 
         webView= (WebView) findViewById(R.id.my_web_view);
+        webView.setHorizontalScrollBarEnabled(true);
         webView.setWebChromeClient(new WebChromeClient());  // this is needed to trigger alert !!
         webView.setWebViewClient(new WebViewClient());
 
