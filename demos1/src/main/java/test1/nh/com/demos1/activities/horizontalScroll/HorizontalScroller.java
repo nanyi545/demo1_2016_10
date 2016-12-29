@@ -8,13 +8,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Scroller;
+
+import org.mockito.asm.tree.analysis.Frame;
 
 /**
  * Created by Administrator on 16-9-16.
  */
 public class HorizontalScroller extends ViewGroup {
-
 
     private int mTouchSlop;
 
@@ -175,6 +177,35 @@ public class HorizontalScroller extends ViewGroup {
     }
 
 
+    public int measureDimension(int defaultSize, int measureSpec,String type) {
+        int result=0;
+
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
+
+
+        String specModeStr="";
+
+        switch (specMode){
+            case MeasureSpec.UNSPECIFIED:
+                specModeStr="UNSPECIFIED";
+                result = defaultSize;
+                break;
+            case MeasureSpec.AT_MOST:   //  -----> wrap_content   !!!!!
+                specModeStr="AT_MOST";
+                result = Math.min(defaultSize, specSize);
+                break;
+            case MeasureSpec.EXACTLY:   // ---->  1  specifying size    2  match_parent  !!!!!!
+                specModeStr="EXACTLY";
+                result=specSize;   // spec Size is   in unit px  !!!
+                break;
+        }
+
+        Log.i("eee",type+"   specMode:"+specModeStr+"   specSize:"+specSize+"   measured size:"+result);   // spec Size in px
+        return result;
+    }
+
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -182,9 +213,13 @@ public class HorizontalScroller extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
             // 测量每一个子控件的大小
-            measureChild(childView, widthMeasureSpec, heightMeasureSpec);
+            measureChild(childView, widthMeasureSpec, heightMeasureSpec);   //         protected void measureChild(View child, int parentWidthMeasureSpec,int parentHeightMeasureSpec)
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        measureDimension(100,widthMeasureSpec,"scroller-width");
+        measureDimension(100,heightMeasureSpec,"scroller-height");
+
     }
 
 
@@ -203,7 +238,12 @@ public class HorizontalScroller extends ViewGroup {
 //                childView.layout(i * getMeasuredWidth(), 0, i * getMeasuredWidth()+childView.getMeasuredWidth()+getPaddingLeft(), childView.getMeasuredHeight());
                 //-------
                 childView.layout(i * childView.getMeasuredWidth(), 0, (i+1) * childView.getMeasuredWidth(), childView.getMeasuredHeight());
-//                Log.i("ccc","i th child:"+i+"    getMeasuredWidth():"+childView.getMeasuredWidth());
+
+//                * @param l Left position, relative to parent
+//                * @param t Top position, relative to parent
+//                * @param r Right position, relative to parent
+//                * @param b Bottom position, relative to parent
+
             }
             // 初始化左右边界值
             leftBorder = 0;

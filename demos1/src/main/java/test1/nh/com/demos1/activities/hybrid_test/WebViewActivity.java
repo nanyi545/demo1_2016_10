@@ -60,8 +60,11 @@ public class WebViewActivity extends AppCompatActivity {
 //        webView.loadUrl("file:///android_asset/www/js20_changetable.html");
 //        webView.loadUrl("file:///android_asset/www/js21_selection_tabs.html");
 //        webView.loadUrl("file:///android_asset/www/jq1_test.html");
-        webView.loadUrl("file:///android_asset/www/jq2_selectors.html");  // 层级 selector
+//        webView.loadUrl("file:///android_asset/www/jq2_selectors.html");  // 层级 selector
+//        webView.loadUrl("file:///android_asset/www/jq3_content_selectors.html");
 
+
+        webView.loadUrl("file:///android_asset/www/jq8_addElement.html");  // 层级 selector
 
 
 //        webView.addJavascriptInterface(new JSInterface(this), "Android"); //You will access this via Android.method(args);

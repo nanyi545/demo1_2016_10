@@ -43,4 +43,16 @@
 
 
 
+    <test1.nh.com.demos1.customView.StageView
+        android:layout_below="@+id/loadview_compare"
+        custom:selected="true"
+        custom:upperText="hehe"
+        custom:lowerText="nima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></test1.nh.com.demos1.customView.StageView>
+
+
+
+
+
 </RelativeLayout>

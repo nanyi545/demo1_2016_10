@@ -12,28 +12,28 @@
     <test1.nh.com.demos1.activities.horizontalScroll.HorizontalScroller
         android:id="@+id/h_scroller"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="120dp"
         >
 
-        <ImageView
+        <test1.nh.com.demos1.activities.horizontalScroll.TestIv
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@color/Teal500"
             android:clickable="true"/>
 
-        <ImageView
+        <test1.nh.com.demos1.activities.horizontalScroll.TestIv
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@color/Red500"
             android:clickable="true"/>
 
-        <ImageView
+        <test1.nh.com.demos1.activities.horizontalScroll.TestIv
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@color/Purple500"
             android:clickable="true"/>
 
-        <ImageView
+        <test1.nh.com.demos1.activities.horizontalScroll.TestIv
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@color/Blue500"

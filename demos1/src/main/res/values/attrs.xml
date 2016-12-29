@@ -140,4 +140,17 @@
         <attr name="title" format="string" />
     </declare-styleable>
 
+
+    <declare-styleable name="TriangleView">
+        <attr name="upsideDown" format="boolean" />
+        <attr name="triangleColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="StageView">
+        <attr name="upperText" format="string" />
+        <attr name="lowerText" format="string" />
+        <attr name="selected" format="boolean" />
+    </declare-styleable>
+
+
 </resources>

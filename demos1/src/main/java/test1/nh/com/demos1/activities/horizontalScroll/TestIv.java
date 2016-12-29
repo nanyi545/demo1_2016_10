@@ -1,54 +1,48 @@
-package test1.nh.com.demos1.customView;
+package test1.nh.com.demos1.activities.horizontalScroll;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
+import android.widget.ImageView;
 
 /**
- * Created by Administrator on 16-9-4.
+ * Created by Administrator on 2016/12/27.
  */
-public class TestMeasureView extends View {
+public class TestIv extends ImageView {
 
 
-    public TestMeasureView(Context context) {
+    public TestIv(Context context) {
         super(context);
     }
 
-    public TestMeasureView(Context context, AttributeSet attrs) {
+    public TestIv(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public TestMeasureView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TestIv(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        int widthSize = View.resolveSize(getMinWidth(), widthMeasureSpec);
-//        int widthSize=measureDimension(getMinWidth(),widthMeasureSpec,"width  ");
 
-        //Get the height measurement
-        int heightSize = View.resolveSize(getMinHeight(), heightMeasureSpec);
-
-        //MUST call this to store the measurements
-        setMeasuredDimension(widthSize, heightSize);
+        measureDimension(100,widthMeasureSpec,"width");
+        measureDimension(100,heightMeasureSpec,"height");
 
     }
 
-    private int getMinHeight() {
-        return 150;
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
     }
 
-    private int getMinWidth() {
-        return 150;
-    }
 
 
-    public int measureDimension(int defaultSize, int measureSpec,String type) {
+    public int measureDimension(int defaultSize, int measureSpec, String type) {
         int result=0;
 
         int specMode = MeasureSpec.getMode(measureSpec);
@@ -75,6 +69,7 @@ public class TestMeasureView extends View {
         Log.i("eee",type+"   specMode:"+specModeStr+"   specSize:"+specSize+"   measured size:"+result);   // spec Size in px
         return result;
     }
+
 
 
 }

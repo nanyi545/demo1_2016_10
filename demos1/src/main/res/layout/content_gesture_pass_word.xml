@@ -12,4 +12,7 @@
     tools:context="test1.nh.com.demos1.activities.gesture_pass.GesturePassWordActivity"
     tools:showIn="@layout/activity_gesture_pass_word">
 
+
+
+
 </RelativeLayout>
