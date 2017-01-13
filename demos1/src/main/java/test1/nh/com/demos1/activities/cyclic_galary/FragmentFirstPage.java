@@ -45,12 +45,20 @@ public class FragmentFirstPage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_fragment_first_page, container, false);
-        fragments.add(new ImaFragment(R.drawable.fi));
-        fragments.add(new ImaFragment(R.drawable.fo));
-        fragments.add(new ImaFragment(R.drawable.f));
+//        fragments.add(new ImaFragment(R.drawable.fi));
+//        fragments.add(new ImaFragment(R.drawable.fo));
+//        fragments.add(new ImaFragment(R.drawable.f));
+//        fragments.add(new ImaFragment(R.drawable.circle_gray));
+
+        fragments.add(new ImaFragment(R.color.Blue300));
+        fragments.add(new ImaFragment(R.color.Red300));
+        fragments.add(new ImaFragment(R.color.Amber200));
+        fragments.add(new ImaFragment(R.color.Purple300));
+
 
         viewPager = (ViewPager) v.findViewById(R.id.f1_vp);
         indicator= (VpIndicator) v.findViewById(R.id.vp_indicator);
+        indicator.resetTotalCounts(4);
         AppCompatActivity host= (AppCompatActivity) getActivity();
         MyVPAdapter adapter = new MyVPAdapter(host.getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);

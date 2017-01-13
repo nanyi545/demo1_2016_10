@@ -51,7 +51,7 @@
                         android:layout_marginBottom="40dp"
                         android:layout_alignParentBottom="true"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp">
+                        android:layout_height="wrap_content">
 
                         <test1.nh.com.demos1.activities.cyclic_galary.VpIndicator
                             android:id="@+id/vp_indicator"

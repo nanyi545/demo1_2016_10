@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import test1.nh.com.demos1.R;
 
 public class PerformanceActivity extends AppCompatActivity {
@@ -29,6 +32,47 @@ public class PerformanceActivity extends AppCompatActivity {
 //        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
+
+
+
+
+    public void testList(View v){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                LinkedList<Integer> linkedList=new LinkedList();
+                ArrayList<Integer> arrayList=new ArrayList();
+
+                for (int i=0;i<300000;i++){
+                    linkedList.add(i);
+                    arrayList.add(i);
+                }
+                long startTime=System.currentTimeMillis();
+                while (!linkedList.isEmpty()){
+                    linkedList.pollFirst();
+                }
+                long endTime=System.currentTimeMillis();
+
+                Log.i("eee","linked-list pollFirst():"+(endTime-startTime));
+
+
+                startTime=System.currentTimeMillis();
+                while (!arrayList.isEmpty()){
+                    arrayList.remove(0);
+                }
+                endTime=System.currentTimeMillis();
+                Log.i("eee","array-list  remove(0):"+(endTime-startTime));
+
+
+            }
+        }).start();
+
+
+
+    }
+
 
 
     public void dowork(View v){
@@ -67,4 +111,13 @@ public class PerformanceActivity extends AppCompatActivity {
         if (a1<2) return 1;
         else return calculate_fib(a1-1)+calculate_fib(a1-2);
     }
+
+
+
+
+
+
+
+
+
 }

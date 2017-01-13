@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -64,8 +65,8 @@ public class WebViewActivity extends AppCompatActivity {
 //        webView.loadUrl("file:///android_asset/www/jq3_content_selectors.html");
 
 
-        webView.loadUrl("file:///android_asset/www/jq8_addElement.html");  // 层级 selector
-
+//        webView.loadUrl("file:///android_asset/www/jq8_addElement.html");
+        webView.loadUrl("file:///android_asset/www/jq20_navigation.html");
 
 //        webView.addJavascriptInterface(new JSInterface(this), "Android"); //You will access this via Android.method(args);
 //        webView.loadUrl("file:///android_asset/www/js_call_android.html");
@@ -91,11 +92,11 @@ public class WebViewActivity extends AppCompatActivity {
         button2= (Button) findViewById(R.id.button2);
 
 
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url=editText1.getText().toString();
+//                String url=editText1.getText().toString();
+                String url="http://blog.csdn.net/nanyi545/article/details/54408851";
                 webView.loadUrl(url);
             }
         });

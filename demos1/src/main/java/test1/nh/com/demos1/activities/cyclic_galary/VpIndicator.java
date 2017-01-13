@@ -6,8 +6,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Administrator on 2016/11/7.
@@ -33,15 +39,15 @@ public class VpIndicator extends View {
     float mDensity;
 
     int totalCounts=3;
-    private static final int squareSizeInDp=40;
-    private static final int circleRadiusInDp=12;
+    private static final int squareSizeInDp=90;
+    private static final int circleRadiusInDp=36;
     int circleRadiusInPx=10;
 
 
 
     Paint bgCirclePaint;
     Paint colorPaint;
-    Paint testPaint;
+    Paint testPaint,testPaint2;
 
 
     private void init(){
@@ -60,7 +66,21 @@ public class VpIndicator extends View {
         testPaint.setAntiAlias(true);
         testPaint.setColor(Color.rgb(20,255,20));
 
+        testPaint2 = new Paint();
+        testPaint2.setAntiAlias(true);
+        testPaint2.setColor(Color.rgb(20,120,20));
+
+
         path =new Path();
+
+        fixedThreadPool  = Executors.newSingleThreadExecutor();
+        handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                postInvalidate();
+            }
+        };
 
     }
 
@@ -77,10 +97,17 @@ public class VpIndicator extends View {
 
         //MUST call this to store the measurements
         setMeasuredDimension(widthSize, heightSize);
-        initFixedLabelPositions();
-        preInitPath(0,0f);
-        initPath();
+
+        if (firstStart){
+            initFixedLabelPositions();
+            preInitPath(0,0f);
+            initPath();
+            firstStart=false;
+        }
+
     }
+
+    boolean firstStart=true;
 
     int viewWidth,viewHeight;
 
@@ -109,21 +136,35 @@ public class VpIndicator extends View {
         }
     }
 
+
+    ExecutorService fixedThreadPool ;
+    Handler handler;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         drawFixedlabels(canvas);
 
-
+        // ------  real draw functions .....
         canvas.drawPath(path, colorPaint);
-        canvas.drawCircle(p1.x,p1.y,r1,colorPaint);
-        canvas.drawCircle(p2.x,p2.y,r2,colorPaint);
+//        canvas.drawCircle(p1.x,p1.y,r1,colorPaint);
+//        canvas.drawCircle(p2.x,p2.y,r2,colorPaint);
 
-//        canvas.drawCircle(centerPoint.x,centerPoint.y,1f,testPaint);
-//        canvas.drawCircle(helperPoint1.x,helperPoint1.y,1f,testPaint);
-//        canvas.drawCircle(helperPoint2.x,helperPoint2.y,1f,testPaint);
-//        canvas.drawCircle(helperPoint3.x,helperPoint3.y,1f,testPaint);
-//        canvas.drawCircle(helperPoint4.x,helperPoint4.y,1f,testPaint);
+
+
+        // ----- for debugging .....
+        canvas.drawCircle(p1.x,p1.y,r1,testPaint2);
+        canvas.drawCircle(p2.x,p2.y,r2,testPaint2);
+
+        canvas.drawCircle(centerPoint.x,centerPoint.y,testR,testPaint);
+        canvas.drawCircle(helperPoint1.x,helperPoint1.y,testR,testPaint);
+        canvas.drawCircle(helperPoint2.x,helperPoint2.y,testR,testPaint);
+        canvas.drawCircle(helperPoint3.x,helperPoint3.y,testR,testPaint);
+        canvas.drawCircle(helperPoint4.x,helperPoint4.y,testR,testPaint);
+        canvas.drawCircle(p1.x,p1.y,testR,testPaint);
+        canvas.drawCircle(p2.x,p2.y,testR,testPaint);
+
+
     }
 
 
@@ -156,10 +197,12 @@ public class VpIndicator extends View {
         r1=(1f-progress)*circleRadiusInPx;
         r2=(progress)*circleRadiusInPx;
 
+
     }
 
     //---for debugging....
     PointF centerPoint,helperPoint1,helperPoint2,helperPoint3,helperPoint4;
+    float testR=3f;
 
 
     private void initPath(){
@@ -173,7 +216,6 @@ public class VpIndicator extends View {
         p2=this.p2;
         r1=this.r1;
         r2=this.r2;
-
 
 
         float ratio=r1/(r1+r2);
@@ -195,16 +237,27 @@ public class VpIndicator extends View {
         path.lineTo(helperPoints_21[1].x, helperPoints_21[1].y);
         path.quadTo(temp1.x,temp1.y,helperPoints_12[1].x, helperPoints_12[1].y);
 
+        Log.i("BBB","initPath:"+Thread.currentThread().getName());
     }
 
 
-    public void update(int position,float progress){
+    public void update(final int position, final float progress){
         if(position>=(totalCounts-1)){
             return;
         }
-        preInitPath(position,progress);
-        initPath();
-        invalidate();
+//        preInitPath(position,progress);
+//        initPath();
+//        invalidate();
+
+        fixedThreadPool.execute(new Runnable(){
+            @Override
+            public void run() {
+                preInitPath(position,progress);
+                initPath();
+                handler.sendEmptyMessage(1);
+            }
+        });
+
     }
 
 
@@ -217,6 +270,15 @@ public class VpIndicator extends View {
         ret[0]=new PointF(center.x-dx,center.y-dy);
         ret[1]=new PointF(center.x-dx,center.y+dy);
         return ret;
+    }
+
+
+
+
+    public void resetTotalCounts(int counts){
+        totalCounts=counts;
+        requestLayout();
+        invalidate();
     }
 
 

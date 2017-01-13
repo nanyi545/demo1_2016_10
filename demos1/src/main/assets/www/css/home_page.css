@@ -1,0 +1,72 @@
+
+.header{
+    background:gray;
+}
+
+#topBar{
+
+}
+
+#topBarContent{
+    height:3em;
+    width:70vw;
+    margin:0 auto 0 auto;
+    background:LightCyan;
+}
+
+#topBarActions{
+    display:inline-block;
+    height:1em;
+    margin-top:1em;
+    float:right;
+    padding-right:1.5em;
+}
+
+#topBarActions li{
+    display:inline-block;
+    margin-left:0.5em;
+}
+
+#topBarActions li img{
+
+    width:0.6em;
+    height:0.6em;
+    margin-bottom:0.2em;
+    display:inline-block;
+}
+
+#topBarActions li a{
+    top:-0.3em;
+    position:relative;
+    display:inline;
+    font-size:80%;
+}
+
+
+#company_info{
+    width:70vw;
+    margin:0 auto 0 auto;
+    background:SkyBlue;
+}
+
+.left{
+
+}
+
+.right{
+
+}
+
+.company_info_label{
+    border:1px solid blue;
+    padding:0;
+}
+
+.company_info_label_inner{
+    border:1px solid red;
+    display:block;
+    height:2em;
+    margin:1em;
+}
+
+
