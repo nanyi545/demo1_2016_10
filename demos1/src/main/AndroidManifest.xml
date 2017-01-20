@@ -106,7 +106,7 @@
         <activity
             android:name=".activities.matDesign.RecyclerViewActivity3"
             android:label="@string/title_activity_recycler_view3" />
-        <activity android:name=".activities.LeakActivity" />
+        <activity android:name=".activities.leaksTest.LeakActivity" />
         <activity
             android:name=".activities.CustomViewActivity"
             android:theme="@style/CostumViewTheme" />
@@ -219,7 +219,13 @@
         <activity
             android:name=".activities.gesture_pass.GesturePassWordActivity"
             android:label="@string/title_activity_gesture_pass_word"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.hybrid_test.WebViewActivity2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.patterns.MainActivity" />
+        <activity android:name=".activities.leaksTest.LeakTest2Activity" />
+        <activity android:name=".activities.leaksTest.LeakActivity2"></activity>
     </application>
 
 </manifest>

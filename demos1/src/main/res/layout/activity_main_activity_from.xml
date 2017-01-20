@@ -148,6 +148,16 @@
             android:text="leak test"/>
 
         <Button
+            android:id="@+id/button22_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_anim_test"
+            android:onClick="jump_leak2"
+            android:layout_toRightOf="@+id/button22"
+            android:text="leak test 2"/>
+
+
+        <Button
             android:id="@+id/button23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -415,6 +425,15 @@
             android:layout_below="@+id/button52"
             android:onClick="jump_webview"
             android:text="webview测试"/>
+
+        <Button
+            android:id="@+id/button53_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button52"
+            android:layout_toRightOf="@+id/button53"
+            android:onClick="jump_webview2"
+            android:text="webview测试2"/>
 
 
         <Button

@@ -1,4 +1,4 @@
-package test1.nh.com.demos1.activities;
+package test1.nh.com.demos1.activities.leaksTest;
 
 import android.app.Activity;
 import android.os.Bundle;

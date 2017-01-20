@@ -40,7 +40,10 @@ import test1.nh.com.demos1.activities.generic_test.GenericTestActivity;
 import test1.nh.com.demos1.activities.gesture_pass.GesturePassWordActivity;
 import test1.nh.com.demos1.activities.horizontalScroll.HorizontalScrollActivity;
 import test1.nh.com.demos1.activities.hybrid_test.WebViewActivity;
+import test1.nh.com.demos1.activities.hybrid_test.WebViewActivity2;
 import test1.nh.com.demos1.activities.interactive_chart.InteractiveActivity;
+import test1.nh.com.demos1.activities.leaksTest.LeakActivity;
+import test1.nh.com.demos1.activities.leaksTest.LeakTest2Activity;
 import test1.nh.com.demos1.activities.matDesign.MatDesignPanelActivity;
 import test1.nh.com.demos1.activities.range_seek.RangeSeekbarMainActivity;
 import test1.nh.com.demos1.activities.selectTime.SelectTimeActivity;
@@ -386,6 +389,11 @@ public class MainActivity_from extends AppCompatActivity {
         Intent i1=new Intent(this,LeakActivity.class);
         startActivity(i1);
     }
+    public void jump_leak2(View view){
+        Intent i1=new Intent(this,LeakTest2Activity.class);
+        startActivity(i1);
+    }
+
 
 
     public void jump_tab(View view){
@@ -509,6 +517,9 @@ public class MainActivity_from extends AppCompatActivity {
 
     public void jump_webview(View view){
         WebViewActivity.start(this);}
+    public void jump_webview2(View view){
+        WebViewActivity2.start(this);}
+
 
     public void jump_seekbar(View view){
         RangeSeekbarMainActivity.start(this);}

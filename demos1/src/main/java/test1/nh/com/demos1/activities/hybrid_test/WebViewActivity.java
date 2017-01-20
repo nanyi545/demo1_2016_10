@@ -66,11 +66,13 @@ public class WebViewActivity extends AppCompatActivity {
 
 
 //        webView.loadUrl("file:///android_asset/www/jq8_addElement.html");
-        webView.loadUrl("file:///android_asset/www/jq20_navigation.html");
+//        webView.loadUrl("file:///android_asset/www/jq20_navigation.html");
+        webView.loadUrl("file:///android_asset/www/jqm2_transition.html");
 
 //        webView.addJavascriptInterface(new JSInterface(this), "Android"); //You will access this via Android.method(args);
 //        webView.loadUrl("file:///android_asset/www/js_call_android.html");
 //        webView.loadUrl("file:///android_asset/www/test_layout.html");
+        
     }
 
     @Override

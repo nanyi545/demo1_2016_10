@@ -198,6 +198,8 @@ public class VpIndicator extends View {
         r2=(progress)*circleRadiusInPx;
 
 
+//        int[][] tempArray=new int[2000][2000];  // this is used to check TinyDancer lib  ....  (FPS check)
+
     }
 
     //---for debugging....

@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import test1.nh.com.demos1.utils.TestObject;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by Administrator on 15-12-31.
@@ -34,13 +35,14 @@ public class InsTest1 {
     @Test
     public void test1(){
         testObj1.talk();
-        assertEquals(8,testObj1.getLength());
+        assertEquals(10,testObj1.getLength());
+
     }
 
     @Test
     public void test2(){
         testObj1.talk();
-        assertEquals(10,testObj1.getLength());
+        assertNotEquals(8,testObj1.getLength());
     }
 
 

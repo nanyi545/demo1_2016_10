@@ -8,6 +8,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.baidu.apistore.sdk.ApiStoreSDK;
+import com.codemonkeylabs.fpslibrary.TinyDancer;
 
 import test1.nh.com.demos1.dependencyInjection.di1.components.DaggerDiComponent;
 import test1.nh.com.demos1.dependencyInjection.di1.components.DiComponent;
@@ -122,6 +123,11 @@ public class DMapplication extends Application {
     @Override
     public void onCreate() {
         Log.i("CCC", "ONCREATE");
+
+
+        TinyDancer.create().show(this); //  FPS checker...
+
+
         me = this;
         int aa = 11;
         obj1 = new TestObject(aa);
