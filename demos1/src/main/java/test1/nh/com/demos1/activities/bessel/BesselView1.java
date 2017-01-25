@@ -108,7 +108,7 @@ public class BesselView1 extends View {
         path=new Path();
         path.moveTo(p_start.x,p_start.y);
 //        for (int ii=0;ii<pointsOnPath.length-2;ii++){
-//            path.cubicTo(pointsOnPath[ii].x,pointsOnPath[ii].y,pointsOnPath[ii+1].x,pointsOnPath[ii+1].y,pointsOnPath[ii+2].x,pointsOnPath[ii+2].y);
+//            connectingPath.cubicTo(pointsOnPath[ii].x,pointsOnPath[ii].y,pointsOnPath[ii+1].x,pointsOnPath[ii+1].y,pointsOnPath[ii+2].x,pointsOnPath[ii+2].y);
 //        }
         path.quadTo(p_control.x,p_control.y,p_end.x,p_end.y);
 

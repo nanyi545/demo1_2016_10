@@ -27,7 +27,12 @@ public class ProtoTypePattern implements Cloneable{
 
     @Override
     public ProtoTypePattern clone() {
-        ProtoTypePattern pattern=new ProtoTypePattern();
+        ProtoTypePattern pattern= null;
+        try {
+            pattern = (ProtoTypePattern) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         pattern.setStr("---");
         pattern.setTestInt(88);
         return pattern;

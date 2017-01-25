@@ -223,7 +223,7 @@
         <activity
             android:name=".activities.hybrid_test.WebViewActivity2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.patterns.MainActivity" />
+        <activity android:name=".activities.patterns.PatternTestActivity" />
         <activity android:name=".activities.leaksTest.LeakTest2Activity" />
         <activity android:name=".activities.leaksTest.LeakActivity2"></activity>
     </application>

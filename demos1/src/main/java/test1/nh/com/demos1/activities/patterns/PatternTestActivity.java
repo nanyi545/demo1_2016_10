@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import test1.nh.com.demos1.R;
 
-public class MainActivity extends AppCompatActivity {
+public class PatternTestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

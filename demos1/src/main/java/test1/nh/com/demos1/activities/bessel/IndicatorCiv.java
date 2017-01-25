@@ -255,11 +255,11 @@ public class IndicatorCiv extends CircleImageView {
 
 
         path.moveTo(p_1[0].x,p_1[0].y);
-//        path.cubicTo(p_ctrl1.x,p_ctrl1.y,p_ctrl2.x,p_ctrl2.y,p_2[3].x,p_2[3].y);
+//        connectingPath.cubicTo(p_ctrl1.x,p_ctrl1.y,p_ctrl2.x,p_ctrl2.y,p_2[3].x,p_2[3].y);
         path.quadTo(p_ctrl1.x,p_ctrl1.y,p_2[3].x,p_2[3].y);
         path.lineTo(p_2[2].x,p_2[2].y);
 
-//        path.cubicTo(p_ctrl2.x,p_ctrl2.y,p_ctrl1.x,p_ctrl1.y,p_1[1].x,p_1[1].y);
+//        connectingPath.cubicTo(p_ctrl2.x,p_ctrl2.y,p_ctrl1.x,p_ctrl1.y,p_1[1].x,p_1[1].y);
         path.quadTo(p_ctrl2.x,p_ctrl2.y,p_1[1].x,p_1[1].y);
         path.close();
 

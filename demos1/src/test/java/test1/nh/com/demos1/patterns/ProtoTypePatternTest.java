@@ -35,7 +35,8 @@ public class ProtoTypePatternTest {
 
     @Test
     public void test1(){
-        System.out.println(p1_clone.toString());
+        System.out.println("p1:"+p1.toString());
+        System.out.println("p1_clone:"+p1_clone.toString());
     }
 
 

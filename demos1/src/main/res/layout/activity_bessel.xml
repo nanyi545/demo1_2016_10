@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-
+    android:clipChildren="false"
     tools:context="test1.nh.com.demos1.activities.bessel.BesselActivity">
 
     <!--android:clipChildren="false"-->
@@ -23,8 +23,8 @@
         android:layout_toRightOf="@+id/bv1"
         android:id="@+id/bv2"
         android:background="@color/Red200"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
 
 
@@ -58,6 +58,15 @@
 
     </android.support.v4.view.ViewPager>
 
+
+
+    <test1.nh.com.demos1.activities.bessel.BounceIndicator
+        android:layout_toRightOf="@+id/bv3"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/indicator_civ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 
 </RelativeLayout>
