@@ -32,6 +32,13 @@ public class BesselActivity extends AppCompatActivity {
 
     ViewPager vp;
 
+
+    BounceIndicator bounceIndicator;
+
+    public void addCount(View v){
+        bounceIndicator.addCount();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,7 @@ public class BesselActivity extends AppCompatActivity {
         vp.setOnPageChangeListener(new CircularViewPagerHandler(vp));
 
 
+        bounceIndicator= (BounceIndicator) findViewById(R.id.bouncing);
     }
 
 

@@ -63,10 +63,22 @@
     <test1.nh.com.demos1.activities.bessel.BounceIndicator
         android:layout_toRightOf="@+id/bv3"
         android:layout_marginLeft="10dp"
+        android:id="@+id/bouncing"
         android:layout_below="@+id/indicator_civ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="addCount"
+        android:layout_toRightOf="@+id/bouncing"
+        android:layout_alignTop="@+id/bouncing"
+        android:onClick="addCount"
+        />
+
 
 
 </RelativeLayout>

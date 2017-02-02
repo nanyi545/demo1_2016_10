@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.support.v4.content.ContextCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +27,8 @@ import test1.nh.com.demos1.utils.math.MathVector2D;
 public class BounceIndicator extends View {
 
 
+    private static final String TAG1="CCC";
+
 
     private static int currentState ;
     private static final int STATE_AT_START=1;
@@ -36,6 +39,15 @@ public class BounceIndicator extends View {
     private static final int STATE_DISOLVING=7;
 
 
+    private boolean preDisolving(){
+        return currentState<=STATE_AT_END;
+    }
+
+    private boolean isDisolving(){
+        return currentState==STATE_DISOLVING;
+    }
+
+
     private void initState(){
         currentState=STATE_AT_START;
     }
@@ -44,20 +56,63 @@ public class BounceIndicator extends View {
         return ((currentState==STATE_STRETCHING)||(currentState==STATE_RELEASING_TO_START)||(currentState==STATE_RELEASING_TO_END));
     }
 
+    private boolean isReleasingToEnd(){
+        return currentState==STATE_RELEASING_TO_END;
+    }
+
     private void setState(int newState){
         currentState=newState;
     }
+    private String getState(){
+        switch (currentState){
+            case STATE_AT_START:return "STATE_AT_START";
+            case STATE_STRETCHING:return "STATE_STRETCHING";
+            case STATE_RELEASING_TO_START:return "STATE_RELEASING_TO_START";
+            case STATE_RELEASING_TO_END:return "STATE_RELEASING_TO_END";
+            case STATE_AT_END:return "STATE_AT_END";
+            case STATE_DISOLVING:return "STATE_DISOLVING";
+        }
+        return "UNDEFINED";
+    }
 
 
-    private void modifyStateFromDrag(){
-        float dy = startY - endY;
-        float dx = startX - endX;
-        MathVector2D.VectorF v = new MathVector2D.VectorF(dx, dy);
-        if (v.getLength() < distanceThreshold ) {
+    private void modifyState(){
+        float dy = stickY - endY;
+        float dx = stickX - endX;
+        MathVector2D.VectorF v_stick2end = new MathVector2D.VectorF(dx, dy);
+
+        float dy2=startY-endY;
+        float dx2=startX-endX;
+        MathVector2D.VectorF v_start2end = new MathVector2D.VectorF(dx2, dy2);
+
+        if (v_stick2end.getLength() < minimumLength){
+            setState(STATE_AT_START);
+        } else if (v_stick2end.getLength() < distanceThreshold ) {
             setState(STATE_STRETCHING);
         } else {
-            setState(STATE_RELEASING_TO_END);
+            if (v_start2end.getLength()< minimumLength ){
+                if (isReleasingToEnd()){
+                    setState(STATE_AT_END);
+                    dissovleAtEnd();
+                }
+            } else {
+                setState(STATE_RELEASING_TO_END);
+            }
         }
+
+        if((isDisolving())&&disolveController.isFinished()){
+            Log.i(TAG1,"RE-init called");
+            reInitState();
+        }
+    }
+
+    private void reInitState(){
+        setState(STATE_AT_START);
+        currentCount=0;
+        startX=stickX;
+        startY=stickY;
+        endX=stickX;
+        endY=stickY;
     }
 
 
@@ -65,6 +120,7 @@ public class BounceIndicator extends View {
         if (currentState==STATE_STRETCHING){
             float dx = stickX - mLastX;
             float dy = stickY - mLastY;
+            if (toStartScroller.isFinished())
             toStartScroller.startScroll((int)mLastX, (int)mLastY, (int)dx, (int)dy);
         }
     }
@@ -73,11 +129,51 @@ public class BounceIndicator extends View {
         if (currentState==STATE_RELEASING_TO_END){
             float dx = endX - startX;
             float dy = endY - startY;
-            toEndScroller.startScroll((int) startX, (int) startY, (int) dx, (int) dy,10);
+            if (toEndScroller.isFinished()){
+                toEndScroller.startScroll((int) startX, (int) startY, (int) dx, (int) dy,10);
+            }
         }
     }
 
 
+
+    /**
+     *  for disolving...
+     */
+    private float[] disolveXseed=new float[15];
+    private float[] disolveYseed=new float[15];
+    private float[] disolveX=new float[15];
+    private float[] disolveY=new float[15];
+
+    private float disolveR=0;
+
+    private static final int MAX_DISOLVE_STAGE=255;
+    private void dissovleAtEnd(){
+        if(disolveController.isFinished()){
+            setState(STATE_DISOLVING);
+            toEndScroller.forceFinished(true);
+            disolveController.startScroll(0,0,0,MAX_DISOLVE_STAGE,10800);
+            invalidate();
+        }
+    }
+
+    Paint disolvePaint;
+
+
+    private void initDisolve(){
+        for (int ii=0;ii<disolveXseed.length;ii++){
+            disolveXseed[ii]= (float) Math.random()-0.5f;
+            disolveYseed[ii]= (float) Math.random()-0.5f;
+        }
+    }
+
+    private void drawDisolv(Canvas canvas){
+        if (currentState == STATE_DISOLVING  &&  toEndScroller.isFinished() ){
+            for (int ii=0;ii<disolveX.length;ii++){
+                canvas.drawCircle( disolveX[ii]+endX,disolveY[ii]+endY,disolveR, disolvePaint);
+            }
+        }
+    }
 
 
     public BounceIndicator(Context context, AttributeSet attrs) {
@@ -123,6 +219,12 @@ public class BounceIndicator extends View {
         initState();
 
         initConnectingPath();
+
+        disolvePaint=new Paint();
+        disolvePaint.setColor(Color.RED);
+        disolvePaint.setAntiAlias(true);
+
+        initDisolve();
     }
 
 
@@ -202,7 +304,9 @@ public class BounceIndicator extends View {
         endY=stickY;
         endR=vHeight/2;
 
-        distanceThreshold=endR*3;
+        distanceThreshold=endR*8;
+        minimumLength=endR/4;
+        disolveR=endR/5;
 
         setMeasuredDimension(widthSize, heightSize);
     }
@@ -263,19 +367,22 @@ public class BounceIndicator extends View {
         }
 
         drawTextAtXY(canvas,endX,endY);
+        drawDisolv(canvas);
     }
 
 
     private void drawTextAtXY(Canvas canvas,float x,float y){
-        if ((currentCount+"").length()==1){
-            canvas.drawCircle(x,y,vHeight/2,bgPaint);
-        } else if ((currentCount+"").length()>1){
-            float textWidth=textRect.width()/(currentCount+"").length()*((currentCount+"").length()-1.7f);
-            canvas.drawCircle(x-textWidth,y,vHeight/2,bgPaint);
-            canvas.drawCircle(x+textWidth,y,vHeight/2,bgPaint);
-            canvas.drawRect(new RectF(x-textWidth,y-vWidth/2,x+textWidth,y+vHeight/2),bgPaint);
+        if (preDisolving()&&currentCount>0){
+            if ((currentCount+"").length()==1){
+                canvas.drawCircle(x,y,vHeight/2,bgPaint);
+            } else if ((currentCount+"").length()>1){
+                float textWidth=textRect.width()/(currentCount+"").length()*((currentCount+"").length()-1.7f);
+                canvas.drawCircle(x-textWidth,y,vHeight/2,bgPaint);
+                canvas.drawCircle(x+textWidth,y,vHeight/2,bgPaint);
+                canvas.drawRect(new RectF(x-textWidth,y-vWidth/2,x+textWidth,y+vHeight/2),bgPaint);
+            }
+            canvas.drawText(""+currentCount,x,y+textRect.height()/2,textP);
         }
-        canvas.drawText(""+currentCount,x,y+textRect.height()/2,textP);
     }
 
 
@@ -290,16 +397,23 @@ public class BounceIndicator extends View {
     float distanceThreshold;
     float initialRatio=1f;  //  ratio= startR / endR
 
+    float minimumLength;
+
     Path connectingPath;   // path connecting the start and end circle
 
 
     private Scroller toEndScroller,toStartScroller,disolveController;
 
 
+    private boolean ignoreTouch(){
+        return ((currentCount<=0)||isDisolving());
+    }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        if (ignoreTouch()) return true;
 
         int action = event.getActionMasked();
         float xTouch = event.getX();
@@ -309,7 +423,8 @@ public class BounceIndicator extends View {
         endX=mLastX;
         endY=mLastY;
 
-        modifyStateFromDrag();
+
+        modifyState();
 
         switch (action){
             case MotionEvent.ACTION_DOWN:
@@ -319,8 +434,6 @@ public class BounceIndicator extends View {
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
 
-
-                toEnd();
                 if (needToDrawConnectingPath()){
                     initConnectingPath();
                 }
@@ -328,14 +441,9 @@ public class BounceIndicator extends View {
                 break;
 
             case MotionEvent.ACTION_UP:
-
-//                float dx = stickX - mLastX;
-//                float dy = stickY - mLastY;
-//                toStartScroller.startScroll((int)mLastX, (int)mLastY, (int)dx, (int)dy);
-
                 toStart();
+                toEnd();
                 invalidate();
-
                 break;
 
         }
@@ -351,6 +459,7 @@ public class BounceIndicator extends View {
 
     @Override
     public void computeScroll() {
+        modifyState();
         if (toStartScroller.computeScrollOffset()) {
             mLastX=toStartScroller.getCurrX();
             mLastY=toStartScroller.getCurrY();
@@ -366,11 +475,29 @@ public class BounceIndicator extends View {
             invalidate();
         }
 
+        if (disolveController.computeScrollOffset()){
 
+            int alpha=MAX_DISOLVE_STAGE-disolveController.getCurrY();
+            int progress=disolveController.getCurrY();
+
+            disolvePaint.setAlpha(alpha);
+
+            for (int ii=0;ii<disolveX.length;ii++){
+                disolveX[ii]= disolveXseed[ii]*progress/MAX_DISOLVE_STAGE*2*(2*endR);
+                disolveY[ii]= disolveYseed[ii]*progress/MAX_DISOLVE_STAGE*2*(2*endR);
+            }
+
+            invalidate();
+        }
 
     }
 
 
+
+    public void addCount(){
+        currentCount+=1;
+        invalidate();
+    }
 
 
 
