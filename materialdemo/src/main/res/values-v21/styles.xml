@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="AppTheme.NoTitle.TransparentSystemBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/Teal200</item>
+    </style>
+
+
+</resources>

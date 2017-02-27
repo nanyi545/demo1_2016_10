@@ -21,7 +21,29 @@
         android:layout_height="100dp"
         android:id="@+id/dynamic_imag"
         android:layout_below="@id/static_imag"
-        android:src="@drawable/animated_vectordrawable"/>
+        android:src="@drawable/animated_vectordrawable"
+        />
+
+
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/svg_imag"
+        android:layout_below="@id/dynamic_imag"
+        />
+
+
+    <com.eftimoff.androipathview.PathView
+        android:layout_below="@+id/svg_imag"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pathView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:svg="@raw/svg6_inkscape_test"/>
+
+
 
 
 

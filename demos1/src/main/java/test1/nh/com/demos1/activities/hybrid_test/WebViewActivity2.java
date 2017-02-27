@@ -34,8 +34,12 @@ public class WebViewActivity2 extends AppCompatActivity {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        webView.loadUrl("file:///android_asset/www/jqm2_transition.html");
-
-
+//        webView.loadUrl("file:///android_asset/www/jqm2_transition.html");
+//        webView.loadUrl("file:///android_asset/www/svg5.html");
+//        webView.loadUrl("file:///android_asset/www/svg6_inkscape_test.html");
+//        webView.loadUrl("file:///android_asset/svg6_inkscape_test.svg");
+//        webView.loadUrl("file:///android_asset/www/ala_17_2_15/promo_page/promo.html");
+//        webView.loadUrl("file:///android_asset/www/ala_17_2_15/reg_success_page/reg_success.html");
+        webView.loadUrl("file:///android_asset/www/ala_17_2_15/wechat_home/wechat_home.html");
     }
 }

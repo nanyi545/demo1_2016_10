@@ -121,7 +121,7 @@ public class BounceIndicator extends View {
             float dx = stickX - mLastX;
             float dy = stickY - mLastY;
             if (toStartScroller.isFinished())
-            toStartScroller.startScroll((int)mLastX, (int)mLastY, (int)dx, (int)dy);
+            toStartScroller.startScroll((int)mLastX, (int)mLastY, (int)dx, (int)dy, 300);
         }
     }
 
@@ -130,7 +130,7 @@ public class BounceIndicator extends View {
             float dx = endX - startX;
             float dy = endY - startY;
             if (toEndScroller.isFinished()){
-                toEndScroller.startScroll((int) startX, (int) startY, (int) dx, (int) dy,10);
+                toEndScroller.startScroll((int) startX, (int) startY, (int) dx, (int) dy, 300);
             }
         }
     }
@@ -152,7 +152,7 @@ public class BounceIndicator extends View {
         if(disolveController.isFinished()){
             setState(STATE_DISOLVING);
             toEndScroller.forceFinished(true);
-            disolveController.startScroll(0,0,0,MAX_DISOLVE_STAGE,10800);
+            disolveController.startScroll(0,0,0,MAX_DISOLVE_STAGE,1000);
             invalidate();
         }
     }
@@ -227,7 +227,7 @@ public class BounceIndicator extends View {
         initDisolve();
     }
 
-
+    PointF startPoint_1=new PointF(),startPoint_2=new PointF(),endPoint_1=new PointF(),endPoint_2=new PointF();
 
     private void initConnectingPath(){
 
@@ -249,18 +249,23 @@ public class BounceIndicator extends View {
         v1.scaleTo(startR);
         v1.addAngle(-90);
         startPoint_1.offset(v1.dx,v1.dy);
+        this.startPoint_1.set(startPoint_1);
+
         v1.addAngle(180);
         startPoint_2.offset(v1.dx,v1.dy);
-
+        this.startPoint_2.set(startPoint_2);
 
         MathVector2D.VectorF v2=new MathVector2D.VectorF( endX-startX, endY-startY );
 
         v2.scaleTo(endR*0.9f);
         v2.addAngle(-90);
         endPoint_1.offset(v2.dx,v2.dy);
+        this.endPoint_1.set(endPoint_1);
 
         v2.addAngle(180);
         endPoint_2.offset(v2.dx,v2.dy);
+        this.endPoint_2.set(endPoint_2);
+
 
         PointF ctrlP=new PointF( endX/2+startX/2 , endY/2 + startY/2  );
 
@@ -361,13 +366,24 @@ public class BounceIndicator extends View {
             }
         }
 
+
+
+
         if (needToDrawConnectingPath()){
             canvas.drawCircle(startX,startY,startR,bgPaint);
             canvas.drawPath(connectingPath, bgPaint);
+
+            canvas.drawCircle(startPoint_1.x,startPoint_1.y,2,testPaint);
+            canvas.drawCircle(startPoint_2.x,startPoint_2.y,2,testPaint);
+            canvas.drawCircle(endPoint_1.x,endPoint_1.y,2,testPaint);
+            canvas.drawCircle(endPoint_2.x,endPoint_2.y,2,testPaint);
+            canvas.drawCircle(startX,startY,2,testPaint);
+            canvas.drawCircle(endX,endY,2,testPaint);
         }
 
         drawTextAtXY(canvas,endX,endY);
         drawDisolv(canvas);
+
     }
 
 

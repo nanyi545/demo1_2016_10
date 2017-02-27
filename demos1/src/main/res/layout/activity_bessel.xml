@@ -74,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="addCount"
+        android:layout_margin="40dp"
         android:layout_toRightOf="@+id/bouncing"
         android:layout_alignTop="@+id/bouncing"
         android:onClick="addCount"

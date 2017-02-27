@@ -20,13 +20,10 @@ public class ScrollableAppbarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrollable_appbar);
 
-
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("Title");
-
-
-
+        
         mRecyclerView = (RecyclerView) findViewById(R.id.rvToDoList);
         // use this setting to improve performance if you know that changes------------------
         // in content do not change the layout size of the RecyclerView

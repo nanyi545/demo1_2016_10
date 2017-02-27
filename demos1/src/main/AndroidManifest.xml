@@ -226,6 +226,8 @@
         <activity android:name=".activities.patterns.PatternTestActivity" />
         <activity android:name=".activities.leaksTest.LeakTest2Activity" />
         <activity android:name=".activities.leaksTest.LeakActivity2"></activity>
+        <activity android:name=".activities.VectorDrawableActivity" />
+
     </application>
 
 </manifest>

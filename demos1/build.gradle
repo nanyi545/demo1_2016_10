@@ -22,6 +22,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        generatedDensities = []  // error in parsing "g/"
     }
 
     packagingOptions {
@@ -55,6 +57,7 @@ android {
 
 repositories {
     maven { url "https://jitpack.io" }  ////mpAndroidChart
+    maven { url "http://dl.bintray.com/pixplicity/android" }
     jcenter()
 }
 
@@ -198,5 +201,10 @@ dependencies {
     debugCompile "com.github.brianPlummer:tinydancer:0.1.0"
     releaseCompile "com.github.brianPlummer:tinydancer-noop:0.1.0"
     testCompile "com.github.brianPlummer:tinydancer-noop:0.1.0"
+
+
+    compile 'com.pixplicity.sharp:library:1.0.2@aar'   // this does not work with animation ...
+    compile 'com.eftimoff:android-pathview:1.0.8@aar'// this works with animation ...  ???? not working ....
+
 
 }

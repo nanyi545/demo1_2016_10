@@ -29,9 +29,11 @@
         <activity
             android:name=".activities.FABactivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.ScrollableAppbarActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activities.ScrollableAppbarActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.TestBehaviour1Activity"
+            android:theme="@style/AppTheme.NoActionBar.TransparentSystemBar"></activity>
     </application>
-
 
 </manifest>

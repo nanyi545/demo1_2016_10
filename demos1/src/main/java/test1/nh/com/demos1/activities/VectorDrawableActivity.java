@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.pixplicity.sharp.Sharp;
+
 import test1.nh.com.demos1.R;
 
 public class VectorDrawableActivity extends AppCompatActivity {
@@ -34,6 +36,12 @@ public class VectorDrawableActivity extends AppCompatActivity {
         if (drawable instanceof Animatable) {
             ((Animatable) drawable).start();
         }
+
+
+        ImageView svgIv=(ImageView) findViewById(R.id.svg_imag);    //  this lib does not show animation ....
+        Sharp.loadAsset(getAssets(),"svg6_inkscape_test.svg").into(svgIv);
+
+
 
     }
 }

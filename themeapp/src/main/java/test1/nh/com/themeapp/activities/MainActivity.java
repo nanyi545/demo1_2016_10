@@ -134,5 +134,11 @@ public class MainActivity extends AppCompatActivity
         startActivity(mIntent);
     }
 
+    public void jump_behaviour1(View view){
+        TestBehaviour1Activity.start(this);
+    }
+
+
+
 
 }

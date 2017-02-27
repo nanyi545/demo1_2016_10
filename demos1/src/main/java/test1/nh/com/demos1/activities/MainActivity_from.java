@@ -569,6 +569,10 @@ public class MainActivity_from extends AppCompatActivity {
     }
 
 
+    public void jump_vector(View view){
+        VectorDrawableActivity.start(this);}
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
