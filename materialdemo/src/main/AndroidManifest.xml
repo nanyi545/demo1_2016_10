@@ -11,6 +11,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -20,10 +21,11 @@
         <activity
             android:name=".behaviour2.BehaviourActivity2"
             android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
-        <activity android:name=".testPullToRefresh.TestPullRefreshActivity"
-            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar"></activity>
-
-
+        <activity
+            android:name=".testPullToRefresh.TestPullRefreshActivity"
+            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
+        <activity android:name=".testPullToRefresh.TestPullRefreshActivity2"
+            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" ></activity>
     </application>
 
 </manifest>

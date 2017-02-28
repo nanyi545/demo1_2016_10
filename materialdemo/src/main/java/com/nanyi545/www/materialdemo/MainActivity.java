@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.nanyi545.www.materialdemo.behaviour2.BehaviourActivity2;
 import com.nanyi545.www.materialdemo.testPullToRefresh.TestPullRefreshActivity;
+import com.nanyi545.www.materialdemo.testPullToRefresh.TestPullRefreshActivity2;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,5 +28,8 @@ public class MainActivity extends AppCompatActivity {
         TestPullRefreshActivity.start(this);
     }
 
+    public void jumpPullToRefresh2(View v){
+        TestPullRefreshActivity2.start(this);
+    }
 
 }

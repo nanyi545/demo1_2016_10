@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
 
+    <color name="Transparent">#00ffffff</color>
+
+
     <!-- Material design   Reds -->
     <color name="Red50">#fde0dc</color>
     <color name="Red100">#f9bdbb</color>

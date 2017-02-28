@@ -1,13 +1,12 @@
 package com.nanyi545.www.materialdemo.testPullToRefresh;
 
 import android.content.Context;
-import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
@@ -19,10 +18,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Created by Administrator on 2017/2/27.
+ * Created by Administrator on 2017/2/28.
  */
-public class PullToRefresh extends RelativeLayout {
-
+public class CoordinatorPullToRefresh extends CoordinatorLayout {
 
     /**
      * RevealContent class holds the View that is shown during pull-down-to-refresh process
@@ -43,10 +41,8 @@ public class PullToRefresh extends RelativeLayout {
 
         abstract void setProgress(float progress);
         abstract int getContentId(); /** get layout id to inflate **/
-        abstract RevealContent init(Context context,PullToRefresh parent);
-
+        abstract RevealContent init(Context context,CoordinatorPullToRefresh parent);
     }
-
 
 
     /**
@@ -69,7 +65,7 @@ public class PullToRefresh extends RelativeLayout {
         }
 
         @Override
-        RevealContent init( Context context, PullToRefresh parent) {
+        RevealContent init( Context context, CoordinatorPullToRefresh parent) {
             LayoutInflater mInflater = LayoutInflater.from(context);
             View revealContent  =  mInflater.inflate(getContentId(), null);
             int viewHeight= (int) context.getResources().getDimension(R.dimen.reveal_height_imp1);
@@ -97,37 +93,13 @@ public class PullToRefresh extends RelativeLayout {
     }
 
 
-
-
-
-    public PullToRefresh(Context context, AttributeSet attrs) {
-        this(context,attrs,0);
+    private RevealContent revealContent;
+    private void setRevelContent(RevealContent revealContent){
+        this.revealContent=revealContent;
     }
-
-    public PullToRefresh(Context context) {
-        this(context,null);
+    private RevealContent getRevealContent() {
+        return revealContent;
     }
-
-    public PullToRefresh(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initView(context);
-    }
-
-
-
-    private Scroller mScroller;
-
-
-    // last position on touch screen
-    private float mLastX=0;
-    private float mLastY=0;
-
-
-
-    private void initView(Context context){
-        mScroller=new Scroller(context);
-    }
-
     public void setRevealContent(Class<? extends RevealContent> cls){
         try {
             Constructor c=cls.getConstructor(Context.class);
@@ -143,19 +115,46 @@ public class PullToRefresh extends RelativeLayout {
         }
     }
 
+
+    /**-----------end of reveal content-----------**/
+
+
+
+    public CoordinatorPullToRefresh(Context context) {
+        this(context,null);
+    }
+
+    public CoordinatorPullToRefresh(Context context, AttributeSet attrs) {
+        this(context,attrs,0);
+    }
+
+    public CoordinatorPullToRefresh(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initView(context);
+    }
+
+
+    private Scroller mScroller;
+
+    // last position on touch screen
+    private float mLastX=0;
+    private float mLastY=0;
+
+    private void initView(Context context){
+        mScroller=new Scroller(context);
+        setClickable(true);
+    }
+
+
+
     private int revealHeight =100;
     public void setRevealHeight(int revealHeight) {
         this.revealHeight = revealHeight;
     }
 
 
-    private RevealContent revealContent;
-    private void setRevelContent(RevealContent revealContent){
-        this.revealContent=revealContent;
-    }
-    private RevealContent getRevealContent() {
-        return revealContent;
-    }
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -163,13 +162,13 @@ public class PullToRefresh extends RelativeLayout {
         float yTouch = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.i("ccc","onTouchEvent-ACTION_DOWN");
-                if (getScrollY()> 0) return true;  // only scroll down( getScrollY()<=0 ) is allowed  !!!
+                Log.i("bbb","onTouchEvent-ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
                 float scrollByStart = deltaY;
+                Log.i("bbb","onTouchEvent-ACTION_MOVE");
 
                 if(((-getScrollY()+(scrollByStart)) < revealHeight) && ( getScrollY() <= 0)&& ( scrollByStart >= 0) ){  // only scroll down( scrollByStart>= 0 ) is allowed  !!!     only scroll down within  revealHeight ( scrollByStart < revealHeight )  is allowed
                     scrollBy(0, (int) -scrollByStart);
@@ -207,22 +206,21 @@ public class PullToRefresh extends RelativeLayout {
         mLastY = yTouch;
         Log.i("ccc","---------mLastX:"+mLastX+"    mLastY:"+mLastY+"------------");
 
-//        return super.onTouchEvent(event);
-        return true;
-    }
+        return super.onTouchEvent(event);
 
+    }
 
 
     @Override
     public void computeScroll() {
-        Log.i("ccc","--on computeScroll---");
         // 第三步，重写computeScroll()方法，在其内部调用scrollTo或ScrollBy方法，完成滑动过程
         if (mScroller.computeScrollOffset()) {
-            Log.i("ccc","to x:"+mScroller.getCurrX()+"  to y:"+mScroller.getCurrY()+"----in:"+Thread.currentThread().getName());
+            Log.i("ccc", "to x:" + mScroller.getCurrX() + "  to y:" + mScroller.getCurrY() + "----in:" + Thread.currentThread().getName());
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
             postInvalidate();
         }
     }
+
 
 
 

@@ -10,13 +10,11 @@ import android.view.View;
 
 import com.nanyi545.www.materialdemo.R;
 import com.nanyi545.www.materialdemo.utils.MyRVAdapter;
-import com.nanyi545.www.materialdemo.utils.TranslucentStatusBar;
 
-public class TestPullRefreshActivity extends AppCompatActivity {
-
+public class TestPullRefreshActivity2 extends AppCompatActivity {
 
     public static void start(Context c){
-        Intent i=new Intent(c,TestPullRefreshActivity.class);
+        Intent i=new Intent(c,TestPullRefreshActivity2.class);
         c.startActivity(i);
     }
 
@@ -26,14 +24,12 @@ public class TestPullRefreshActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);   // use this to draw below status bar
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_test_pull_refresh);
-        setContentView(R.layout.activity_test_pull_refresh1);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);   // use this to draw below status bar
+        setContentView(R.layout.activity_test_pull_refresh2);
 
-        PullToRefresh refreshHolder= (PullToRefresh) findViewById(R.id.pull_to_refresh_lo);
-        refreshHolder.setRevealContent(PullToRefresh.RevealContentImp.class);
-
+        CoordinatorPullToRefresh holder= (CoordinatorPullToRefresh) findViewById(R.id.coordinator);
+        holder.setRevealContent(CoordinatorPullToRefresh.RevealContentImp.class);
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rvToDoList);
@@ -43,8 +39,6 @@ public class TestPullRefreshActivity extends AppCompatActivity {
         String[] myDataset={"item1","item2","item3","item4","item5"};
         mAdapter = new MyRVAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
-
-
 
     }
 
