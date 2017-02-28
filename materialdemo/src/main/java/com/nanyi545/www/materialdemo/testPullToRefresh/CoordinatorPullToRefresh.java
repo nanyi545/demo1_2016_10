@@ -155,6 +155,13 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
 
 
 
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent e) {
+        boolean ret=super.onInterceptTouchEvent(e);
+        Log.i("bbb","coordinator:  onInterceptTouchEvent RETURN:"+ret);  // this is always false
+        return ret;
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -162,13 +169,13 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
         float yTouch = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.i("bbb","onTouchEvent-ACTION_DOWN");
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
                 float scrollByStart = deltaY;
-                Log.i("bbb","onTouchEvent-ACTION_MOVE");
+                Log.i("bbb","coordinator   onTouchEvent-ACTION_MOVE");
 
                 if(((-getScrollY()+(scrollByStart)) < revealHeight) && ( getScrollY() <= 0)&& ( scrollByStart >= 0) ){  // only scroll down( scrollByStart>= 0 ) is allowed  !!!     only scroll down within  revealHeight ( scrollByStart < revealHeight )  is allowed
                     scrollBy(0, (int) -scrollByStart);

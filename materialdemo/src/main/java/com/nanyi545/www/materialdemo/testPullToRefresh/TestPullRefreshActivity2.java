@@ -32,11 +32,12 @@ public class TestPullRefreshActivity2 extends AppCompatActivity {
         holder.setRevealContent(CoordinatorPullToRefresh.RevealContentImp.class);
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rvToDoList);
+        mRecyclerView = (CostumRV) findViewById(R.id.rvToDoList);
         mRecyclerView.setHasFixedSize(true);
+
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        String[] myDataset={"item1","item2","item3","item4","item5"};
+        String[] myDataset={"item1","item2","item3","item4","item5","item1","item2","item3","item4","item5","item1","item2","item3","item4","item5","item1","item2","item3","item4","item5"};
         mAdapter = new MyRVAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
 

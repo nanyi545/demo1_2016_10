@@ -3,9 +3,8 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:\Users\Administrator\Downloads\android-studio\gradle\gradle-2.14.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -18,18 +17,7 @@
             <option value="$PROJECT_DIR$/themeapp" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/animatedVdrawable" />
-            <option value="$PROJECT_DIR$/app0914" />
-            <option value="$PROJECT_DIR$/breathSignalPro" />
-            <option value="$PROJECT_DIR$/demos1" />
-            <option value="$PROJECT_DIR$/hybridtest" />
-            <option value="$PROJECT_DIR$/materialdemo" />
-            <option value="$PROJECT_DIR$/themeapp" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
