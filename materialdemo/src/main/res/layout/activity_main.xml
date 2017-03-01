@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:onClick="jumpNestedScroll"
         android:text="test nested scroll"/>
+
     <Button
         android:id="@+id/btn6"
         android:layout_below="@+id/btn5"
@@ -55,6 +56,7 @@
         android:layout_height="wrap_content"
         android:onClick="jumpNestedScroll2"
         android:text="test nested scroll2"/>
+
     <Button
         android:id="@+id/btn7"
         android:layout_below="@+id/btn6"

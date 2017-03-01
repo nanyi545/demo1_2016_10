@@ -163,6 +163,25 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
     }
 
 
+    private int totalDrag=0;
+    public void dragDown(int dy){   // dy < 0
+        totalDrag=totalDrag+dy;
+        if ((-totalDrag)<revealHeight){
+            scrollBy(0, dy);
+            float progress= (-totalDrag+0.0f) / revealHeight;
+            getRevealContent().setProgress(progress);
+        }
+    }
+
+    public void releaseDrag(){
+        int dy =  - getScrollY();
+        mScroller.startScroll(0, getScrollY(), 0, dy,400);
+        totalDrag=0;
+        invalidate();
+    }
+
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float xTouch = event.getX();

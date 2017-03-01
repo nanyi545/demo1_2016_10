@@ -4,12 +4,12 @@
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\anim\\anim_menu_up.xml"
     },
     {
-        "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\fab_in.xml",
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\anim\\fab_in.xml"
+    },
+    {
+        "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\fab_in.xml",
@@ -24,16 +24,16 @@
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_popup_enter.xml"
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\anim_activity_out_test1.xml",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\anim\\anim_activity_out_test1.xml"
     },
     {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\anim_activity_out_test1.xml",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\anim\\anim_activity_out_test1.xml"
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_popup_enter.xml"
     },
     {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\head_out.xml",
@@ -64,12 +64,12 @@
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_slide_out_top.xml"
     },
     {
-        "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\anim_menu_up.xml",
-        "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\anim\\anim_menu_up.xml"
-    },
-    {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\anim_menu_up.xml",
+        "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\anim\\anim_menu_up.xml"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\anim\\page_bottom_in.xml",

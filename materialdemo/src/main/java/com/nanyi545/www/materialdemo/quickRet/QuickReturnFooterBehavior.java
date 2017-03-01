@@ -6,7 +6,9 @@ import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
@@ -21,6 +23,10 @@ import android.view.animation.Interpolator;
  */
 @SuppressWarnings("unused")
 public class QuickReturnFooterBehavior extends CoordinatorLayout.Behavior<View> {
+
+    private static final boolean DEMO_SCROLL=false;
+
+
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
 
     private int mDySinceDirectionChange;
@@ -37,7 +43,24 @@ public class QuickReturnFooterBehavior extends CoordinatorLayout.Behavior<View> 
     }
 
     @Override
+    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target) {
+        if (DEMO_SCROLL){
+            int dy=coordinatorLayout.getScrollY();
+            coordinatorLayout.scrollBy(0,-dy);
+            Log.i("bbb","coordinatorLayout dy:"+dy);
+        }
+        super.onStopNestedScroll(coordinatorLayout, child, target);
+    }
+
+    @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
+        if(DEMO_SCROLL){
+            Log.i("bbb","----nested scroll::::"+dy+"  child:"+child.getClass().getName()+"   target:"+target.getClass().getName());  //
+            if((dy<0)&&(target instanceof RecyclerView)&&(((RecyclerView) target).computeVerticalScrollOffset()==0)){
+                coordinatorLayout.scrollBy(0,dy);
+            }
+        }
+
         if (dy > 0 && mDySinceDirectionChange < 0
                 || dy < 0 && mDySinceDirectionChange > 0) {
             // We detected a direction change- cancel existing animations and reset our cumulative delta Y
