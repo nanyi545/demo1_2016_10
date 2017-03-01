@@ -24,8 +24,16 @@
         <activity
             android:name=".testPullToRefresh.TestPullRefreshActivity"
             android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
-        <activity android:name=".testPullToRefresh.TestPullRefreshActivity2"
-            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" ></activity>
+        <activity
+            android:name=".testPullToRefresh.TestPullRefreshActivity2"
+            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
+        <activity
+            android:name=".nestedScroll.TestNestedScrollActivity"
+            android:theme="@style/AppTheme.NoTitle" />
+        <activity
+            android:name=".nestedScroll.TestNestedScrollActivity2"
+            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
+        <activity android:name=".quickRet.QuickRetActivity"></activity>
     </application>
 
 </manifest>

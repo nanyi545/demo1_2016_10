@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.nanyi545.www.materialdemo.behaviour2.BehaviourActivity2;
+import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity;
+import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity2;
+import com.nanyi545.www.materialdemo.quickRet.QuickRetActivity;
 import com.nanyi545.www.materialdemo.testPullToRefresh.TestPullRefreshActivity;
 import com.nanyi545.www.materialdemo.testPullToRefresh.TestPullRefreshActivity2;
 
@@ -31,5 +34,17 @@ public class MainActivity extends AppCompatActivity {
     public void jumpPullToRefresh2(View v){
         TestPullRefreshActivity2.start(this);
     }
+
+    public void jumpNestedScroll(View v){
+        TestNestedScrollActivity.start(this);
+    }
+    public void jumpNestedScroll2(View v){
+        TestNestedScrollActivity2.start(this);
+    }
+
+    public void jumpQuickRet(View v){
+        QuickRetActivity.start(this);
+    }
+
 
 }
