@@ -29,7 +29,7 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes) {
         boolean ret=super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes);
-        Log.i("aaa","extended AppBarLayout.Behavior---- onStartNestedScroll  default ret:"+ret+"  directTargetChild:"+directTargetChild.getClass().getName()+"  target:"+target.getClass().getName());
+        Log.i("lll","extended AppBarLayout.Behavior---- onStartNestedScroll  default ret:"+ret+"  directTargetChild:"+directTargetChild.getClass().getName()+"  target:"+target.getClass().getName());
         return ret;
     }
 
@@ -49,6 +49,7 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         Log.i("kkk","----nested scroll:dyConsumed:"+dyConsumed+"   dyUnconsumed:"+dyUnconsumed);  //
+
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
 
@@ -57,6 +58,18 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
 //        int dy=coordinatorLayout.getScrollY();
 //        coordinatorLayout.scrollBy(0,-dy);
 //        Log.i("bbb","coordinatorLayout dy:"+dy);
+        Log.i("lll","extended AppBarLayout.Behavior   --- onStopNestedScroll:"+"   target:"+target.getClass().getName());
+
+        /**
+         *  for  at least extending   AppBarLayout.Behavior
+         *
+         *  this method (onStopNestedScroll) is called  only once in pre-L systems  --> at the very end
+         *
+         *  but is called twice on after-L systems --> both at the begining and at the end , the "extra call" at the begining hampers the scroll
+         *
+         *  ???---why called twice--???
+         *
+         */
         ((CoordinatorPullToRefresh)coordinatorLayout).releaseDrag();
 
         super.onStopNestedScroll(coordinatorLayout, abl, target);

@@ -169,35 +169,41 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
 
     @Override
     public void scrollBy(int x, int y) {
-        totalDrag=totalDrag+y;
-        Log.i("jjj","totalDrag:"+totalDrag);
         super.scrollBy(x, y);
     }
 
     public void dragDown1(int dy){   // dy < 0
-        totalDrag=totalDrag+dy;
-        Log.i("fff","--outer--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
-        if ((-totalDrag)<revealHeight){
-            Log.i("aaa","----coordinator LO drag down dy:"+dy);  //
-            Log.i("fff","--inner--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
-            this.scrollBy(0, dy);
-            float progress= (-totalDrag+0.0f) / revealHeight;
-            getRevealContent().setProgress(progress);
-        } else {
+        if (mScroller.isFinished()){
+
+            totalDrag=totalDrag+dy;
+            Log.i("fff","--outer--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
+            if ((-totalDrag)<revealHeight){
+                Log.i("aaa","----coordinator LO drag down dy:"+dy);  //
+                Log.i("fff","--inner--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
+                this.scrollBy(0, dy);
+                float progress= (-totalDrag+0.0f) / revealHeight;
+                getRevealContent().setProgress(progress);
+            } else {
+                totalDrag=-revealHeight;
+                this.scrollTo(0, totalDrag);
+                getRevealContent().setProgress(1f);
+            }
 
         }
     }
 
-
     public void releaseDrag(){
         int dy =  - getScrollY();
-        mScroller.startScroll(0, getScrollY(), 0, dy,400);
-        totalDrag=0;
-        invalidate();
+
+        Log.i("fff","--release: dy:"+dy+"  trigger release:"+(dy>0)+"   totalDrag now at:"+totalDrag);
+
+        if(dy>0){
+            mScroller.startScroll(0, getScrollY(), 0, dy,400);
+            totalDrag=0;
+            invalidate();
+        }
     }
-
-
-
+    
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float xTouch = event.getX();
