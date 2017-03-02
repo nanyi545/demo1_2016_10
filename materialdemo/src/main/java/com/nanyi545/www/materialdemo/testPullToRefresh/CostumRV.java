@@ -58,13 +58,14 @@ public class CostumRV extends RecyclerView {
                 break;
         }
 
-        Log.i("bbb","custom rv-------   onTouchEvent-ACTION:"+e.getAction()+"  OFFSET-V():"+computeVerticalScrollOffset() +" deltaY:"+deltaY);
 //        if ((computeVerticalScrollOffset()==0)&&(deltaY>0) ){
 //            Log.i("bbb","custom rv:   onTouchEvent-ACTION:"+e.getAction()+"  OFFSET-V():"+computeVerticalScrollOffset() +" deltaY:"+deltaY);
 //            return false;
 //        }
 
         boolean returnV=super.onTouchEvent(e);
+        Log.i("ggg","custom rv-------   onTouchEvent-ACTION:"+e.getAction()+"  OFFSET-V():"+computeVerticalScrollOffset() +" deltaY:"+deltaY+"     default-return:"+returnV);
+
         return returnV;   //  returnV
     }
 

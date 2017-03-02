@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right|end"
         android:layout_margin="8dp"
-        android:src="@drawable/abc_ic_search_api_mtrl_alpha"
         app:layout_behavior="com.nanyi545.www.materialdemo.behaviour2.ShrinkBehavior"
         />
 

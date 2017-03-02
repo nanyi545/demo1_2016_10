@@ -1,6 +1,7 @@
 package com.nanyi545.www.materialdemo.testPullToRefresh;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -83,6 +84,7 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
         @Override
         void setProgress(float progress) {
             indicator.setText(""+progress);
+            Log.i("ddd",""+progress);
         }
 
         @Override
@@ -164,14 +166,28 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
 
 
     private int totalDrag=0;
-    public void dragDown(int dy){   // dy < 0
+
+    @Override
+    public void scrollBy(int x, int y) {
+        totalDrag=totalDrag+y;
+        Log.i("jjj","totalDrag:"+totalDrag);
+        super.scrollBy(x, y);
+    }
+
+    public void dragDown1(int dy){   // dy < 0
         totalDrag=totalDrag+dy;
+        Log.i("fff","--outer--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
         if ((-totalDrag)<revealHeight){
-            scrollBy(0, dy);
+            Log.i("aaa","----coordinator LO drag down dy:"+dy);  //
+            Log.i("fff","--inner--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
+            this.scrollBy(0, dy);
             float progress= (-totalDrag+0.0f) / revealHeight;
             getRevealContent().setProgress(progress);
+        } else {
+
         }
     }
+
 
     public void releaseDrag(){
         int dy =  - getScrollY();
