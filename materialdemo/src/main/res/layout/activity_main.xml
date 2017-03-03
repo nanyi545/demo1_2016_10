@@ -1,69 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.nanyi545.www.materialdemo.MainActivity">
+    android:paddingTop="@dimen/activity_vertical_margin">
 
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpBehaviour1"
-        android:text="behabiourTest1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.nanyi545.www.materialdemo.MainActivity">
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_below="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpBehaviour2"
-        android:text="behabiourTest2"/>
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpBehaviour1"
+            android:text="behabiourTest1" />
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_below="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpPullToRefresh"
-        android:text="test pull to refresh"/>
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn1"
+            android:onClick="jumpBehaviour2"
+            android:text="behabiourTest2" />
 
-    <Button
-        android:id="@+id/btn4"
-        android:layout_below="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpPullToRefresh2"
-        android:text="test pull to refresh--coordinator"/>
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn2"
+            android:onClick="jumpPullToRefresh"
+            android:text="test pull to refresh" />
 
-
-    <Button
-        android:id="@+id/btn5"
-        android:layout_below="@+id/btn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpNestedScroll"
-        android:text="test nested scroll"/>
-
-    <Button
-        android:id="@+id/btn6"
-        android:layout_below="@+id/btn5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpNestedScroll2"
-        android:text="test nested scroll2"/>
-
-    <Button
-        android:id="@+id/btn7"
-        android:layout_below="@+id/btn6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jumpQuickRet"
-        android:text="test quick ret"/>
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn3"
+            android:onClick="jumpPullToRefresh2"
+            android:text="test pull to refresh--coordinator" />
 
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn4"
+            android:onClick="jumpNestedScroll"
+            android:text="test nested scroll" />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn5"
+            android:onClick="jumpNestedScroll2"
+            android:text="test nested scroll2" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn6"
+            android:onClick="jumpQuickRet"
+            android:text="test quick ret" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn7"
+            android:onClick="jumpNestedScroll3"
+            android:text="test nested scroll3  --  test NestedScrollView instead of RecyclerView(in CLASSIC Coordinator-Appbar-Collapse-Rv-Layout)" />
+
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn8"
+            android:onClick="jumpNestedScrollNoCoordinator"
+            android:text="test nested scroll without coordinator -- simple test" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpNestedScrollNoCoordinator2"
+            android:text="test nested scroll without coordinator -- custom view to check the process" />
+
+
+    </LinearLayout>
+
+</ScrollView>

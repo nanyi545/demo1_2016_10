@@ -7,6 +7,9 @@ import android.view.View;
 import com.nanyi545.www.materialdemo.behaviour2.BehaviourActivity2;
 import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity;
 import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity2;
+import com.nanyi545.www.materialdemo.nestedScroll.no_coordinator_test.testWithCostumView.NoCoorNestedScrollTestActivity;
+import com.nanyi545.www.materialdemo.nestedScroll.no_coordinator_test.NoCoordinatorNestedScrollTestActivity;
+import com.nanyi545.www.materialdemo.nestedScroll.use_nested_scrollview.TestNestedScrollActivity3;
 import com.nanyi545.www.materialdemo.quickRet.QuickRetActivity;
 import com.nanyi545.www.materialdemo.testPullToRefresh.TestPullRefreshActivity;
 import com.nanyi545.www.materialdemo.testPullToRefresh.TestPullRefreshActivity2;
@@ -44,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void jumpQuickRet(View v){
         QuickRetActivity.start(this);
+    }
+
+    public void jumpNestedScroll3(View v){
+        TestNestedScrollActivity3.start(this);
+    }
+
+    public void jumpNestedScrollNoCoordinator(View v){
+        NoCoordinatorNestedScrollTestActivity.start(this);
+    }
+
+    public void jumpNestedScrollNoCoordinator2(View v){
+        NoCoorNestedScrollTestActivity.start(this);
     }
 
 

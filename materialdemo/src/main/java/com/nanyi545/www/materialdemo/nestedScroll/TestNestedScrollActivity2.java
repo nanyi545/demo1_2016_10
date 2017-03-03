@@ -26,7 +26,6 @@ public class TestNestedScrollActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);   // use this to draw below status bar
-
         setContentView(R.layout.activity_test_nested_scroll2);
         test.sendEmptyMessageDelayed(0,2000);
     }

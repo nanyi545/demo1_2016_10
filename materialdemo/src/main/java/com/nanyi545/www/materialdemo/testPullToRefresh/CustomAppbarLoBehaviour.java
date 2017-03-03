@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -43,6 +44,11 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
 //            ((CoordinatorPullToRefresh)coordinatorLayout).scrollBy(0,dy);
             ((CoordinatorPullToRefresh)coordinatorLayout).dragDown1(dy);
         }
+
+        if((dy<0)&&(target instanceof NestedScrollView)&&(((NestedScrollView) target).computeVerticalScrollOffset()==0)&&appBarFullyExpanded){
+            ((CoordinatorPullToRefresh)coordinatorLayout).dragDown1(dy);
+        }
+
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
     }
 

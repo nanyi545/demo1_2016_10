@@ -20,6 +20,9 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by Administrator on 2017/2/28.
+ *
+ * this Class only supports pull down ....
+ *
  */
 public class CoordinatorPullToRefresh extends CoordinatorLayout {
 
@@ -174,7 +177,6 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
 
     public void dragDown1(int dy){   // dy < 0
         if (mScroller.isFinished()){
-
             totalDrag=totalDrag+dy;
             Log.i("fff","--outer--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+revealHeight);  //
             if ((-totalDrag)<revealHeight){
@@ -203,7 +205,8 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
             invalidate();
         }
     }
-    
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float xTouch = event.getX();
@@ -216,16 +219,20 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
                 float scrollByStart = deltaY;
-                Log.i("bbb","coordinator   onTouchEvent-ACTION_MOVE");
 
-                if(((-getScrollY()+(scrollByStart)) < revealHeight) && ( getScrollY() <= 0)&& ( scrollByStart >= 0) ){  // only scroll down( scrollByStart>= 0 ) is allowed  !!!     only scroll down within  revealHeight ( scrollByStart < revealHeight )  is allowed
-                    scrollBy(0, (int) -scrollByStart);
+
+                if (( getScrollY() <= 0)&& ( scrollByStart >= 0)){    // only when scroll down( scrollByStart>= 0 ) is allowed  !!!
+                    if(((-getScrollY()+(scrollByStart)) < revealHeight)   ){     //  when scroll down within  revealHeight ( scrollByStart < revealHeight )
+                        scrollBy(0, (int) -scrollByStart);
+                    } else {
+                        scrollTo(0, -revealHeight);
+                    }
                 }
                 //    event.getX()  : position of the touch event ...
                 //    getScrollX()  : total scroll of the view     left-->plus,  right-->minus
                 //    deltaX  :  scroll left --> minus      scroll right --> plus
 
-                float progress= (-getScrollY()+(scrollByStart)) / revealHeight;
+                float progress= (-getScrollY()+0f) / revealHeight;
                 getRevealContent().setProgress(progress);
 
                 break;
@@ -235,6 +242,9 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
 //                int targetIndex = (getScrollX() + getWidth() / 2) / getWidth();
 //                int dx = targetIndex * getWidth() - getScrollX();
 
+                float prog= (-getScrollY()+0f) / revealHeight;
+                getRevealContent().setProgress(prog);
+
                 int dy =  - getScrollY();
 
                 //  ---scroll to with out animation
@@ -243,8 +253,6 @@ public class CoordinatorPullToRefresh extends CoordinatorLayout {
                 mScroller.startScroll(0, getScrollY(), 0, dy,400);
                 invalidate();
 
-                Log.i("ccc","onTouchEvent-ACTION_UP");
-                Log.i("bbb","scrollY:"+getScrollY()+"  revealHeight:"+revealHeight);
                 break;
             default:
                 break;
