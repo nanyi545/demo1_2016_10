@@ -94,6 +94,11 @@
             android:onClick="jumpNestedScrollNoCoordinator2"
             android:text="test nested scroll without coordinator -- custom view to check the process" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpCoordinatorNoAppbar"
+            android:text="test coordinator layout without appbar layour" />
 
     </LinearLayout>
 

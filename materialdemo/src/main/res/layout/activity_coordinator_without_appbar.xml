@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvToDoList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp">-->
+        <!--<ImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:src="@drawable/grad_red"/>-->
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/grad_red"/>
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

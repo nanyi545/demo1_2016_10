@@ -30,7 +30,7 @@ public class TestPullRefreshActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_test_pull_refresh2);
 
         CoordinatorPullToRefresh holder= (CoordinatorPullToRefresh) findViewById(R.id.coordinator);
-        holder.setRevealContent(CoordinatorPullToRefresh.RevealContentImp.class);
+        holder.setRevealContent(RevealContentImp.class);
 
 
         mRecyclerView = (CostumRV) findViewById(R.id.rvToDoList);

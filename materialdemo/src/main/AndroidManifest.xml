@@ -39,7 +39,8 @@
             android:name=".nestedScroll.use_nested_scrollview.TestNestedScrollActivity3"
             android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
         <activity android:name=".nestedScroll.no_coordinator_test.NoCoordinatorNestedScrollTestActivity" />
-        <activity android:name=".nestedScroll.no_coordinator_test.testWithCostumView.NoCoorNestedScrollTestActivity"></activity>
+        <activity android:name=".nestedScroll.no_coordinator_test.testWithCostumView.NoCoorNestedScrollTestActivity" />
+        <activity android:name=".coordinatorWithoutAppbarLO.CoordinatorWithoutAppbarActivity"></activity>
     </application>
 
 </manifest>

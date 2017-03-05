@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.nanyi545.www.materialdemo.R;
 import com.nanyi545.www.materialdemo.testPullToRefresh.CoordinatorPullToRefresh;
 import com.nanyi545.www.materialdemo.testPullToRefresh.CostumRV;
+import com.nanyi545.www.materialdemo.testPullToRefresh.RevealContentImp;
 import com.nanyi545.www.materialdemo.utils.MyRVAdapter;
 
 public class TestNestedScrollActivity3 extends AppCompatActivity {
@@ -32,7 +34,8 @@ public class TestNestedScrollActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_test_nested_scroll3);
 
         CoordinatorPullToRefresh holder= (CoordinatorPullToRefresh) findViewById(R.id.coordinator);
-        holder.setRevealContent(CoordinatorPullToRefresh.RevealContentImp.class);
+        Log.i("nnn",""+(holder==null));
+        holder.setRevealContent(RevealContentImp.class);
 
 
         mRecyclerView = (CostumRV) findViewById(R.id.rvToDoList);

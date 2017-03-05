@@ -17,7 +17,6 @@ import com.nanyi545.www.materialdemo.R;
  */
 public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
 
-
     public CustomAppbarLoBehaviour() {
     }
 
@@ -37,7 +36,8 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
 
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dx, int dy, int[] consumed) {
-        Log.i("kkk","----nested pre scroll::::"+dy+"  child:"+child.getClass().getName()+"   target:"+target.getClass().getName()+"  AppBarLayout:");  //
+        Log.i("kkk","----nested pre scroll::::"+dy+"  child:"+child.getClass().getName()+"   target:"+target.getClass().getName()+"  AppBarLayout:"  +"  coor scrollY:"+coordinatorLayout.getScrollY());  //
+
         boolean appBarFullyExpanded=(child.getHeight()==child.getBottom());
         if((dy<0)&&(target instanceof RecyclerView)&&(((RecyclerView) target).computeVerticalScrollOffset()==0)&&appBarFullyExpanded){
 //            coordinatorLayout.scrollBy(0,dy);
@@ -49,6 +49,8 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
             ((CoordinatorPullToRefresh)coordinatorLayout).dragDown1(dy);
         }
 
+        if (coordinatorLayout.getScrollY()<0)return;
+
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
     }
 
@@ -56,8 +58,14 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         Log.i("kkk","----nested scroll:dyConsumed:"+dyConsumed+"   dyUnconsumed:"+dyUnconsumed);  //
 
+
+        if (coordinatorLayout.getScrollY()<0)return;
+
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
+
+
+
 
     @Override
     public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl, View target) {

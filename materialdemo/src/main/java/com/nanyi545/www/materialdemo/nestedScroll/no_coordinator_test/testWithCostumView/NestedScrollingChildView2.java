@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Scroller;
 
 public class NestedScrollingChildView2 extends View implements NestedScrollingChild, OnGestureListener {
 
@@ -38,6 +40,10 @@ public class NestedScrollingChildView2 extends View implements NestedScrollingCh
     paint1.setColor(Color.RED);
     paint1.setTextSize(50);
     paint1.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+
+    flingController=new Scroller(context);
+    flingController.setFriction(0.03f);
+
   }
 
   @Override
@@ -91,12 +97,18 @@ public class NestedScrollingChildView2 extends View implements NestedScrollingCh
     return mNestedScrollingChildHelper.hasNestedScrollingParent();
   }
 
+
   @Override
   public boolean onTouchEvent(MotionEvent event){
+
+    ((View)getParent()).onTouchEvent(event);
+    
     final boolean handled = mDetector.onTouchEvent(event);
-//    if (!handled && event.getAction() == MotionEvent.ACTION_UP) {
-//      stopNestedScroll();
-//    }
+
+    if (!handled && event.getAction() == MotionEvent.ACTION_UP) {
+      stopNestedScroll();
+    }
+    Log.i("mmm","onTouchEvent  handled:"+handled);
     return handled;
   }
 
@@ -115,14 +127,27 @@ public class NestedScrollingChildView2 extends View implements NestedScrollingCh
     return false;
   }
 
+  int Ymin=-10000;
+  int Ymax=10000;
+
   @Override
   public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 //    Log.i("bbb","Nested scroll child -- onscroll");
 //    dispatchNestedPreScroll(0, (int) distanceY, null, null);
 //    dispatchNestedScroll(0, 0, 0, 0, null);
-    Log.i("mmm","hasNestedScrollingParent:"+mNestedScrollingChildHelper.hasNestedScrollingParent());
-    scrollBy(0, (int) distanceY);
-    return true;
+    int nextPosition= (int) (distanceY+getScrollY());
+    boolean ret;
+    if (nextPosition<(Ymax)&&nextPosition>(Ymin)){
+      scrollBy(0, (int) distanceY);
+      ret= true;
+//      dispatchNestedPreScroll(0, (int) distanceY, null, null);    // this allows simultaneous scrolling of child and parent ....
+    } else {
+      ret=false;
+      dispatchNestedPreScroll(0, (int) distanceY, null, null);
+      dispatchNestedScroll(0, (int) distanceY, (int) distanceY, 0, null);
+    }
+    Log.i("mmm","e1:"+e1.getAction()+"   e2:"+e2.getAction()+"  distanceY:"+distanceY+"  getScrollY:"+getScrollY()+"    onScroll:"+ret);
+    return ret;
   }
 
   @Override
@@ -132,17 +157,43 @@ public class NestedScrollingChildView2 extends View implements NestedScrollingCh
 
   @Override
   public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+    Log.i("nnn","onFling velocityY:"+velocityY);
+
+    flingController.fling(getScrollX(), getScrollY(), 0, (int) velocityY, 0, 0, Ymin, Ymax);
+    lastYduringFling=getScrollY();
+
     return true;
   }
+
+  private int lastYduringFling = 0;
+
+
+  @Override
+  public void computeScroll() {
+
+    if (flingController.computeScrollOffset()) {
+      int y=flingController.getCurrY();
+      int differnce=lastYduringFling-y;
+      scrollBy(0,differnce);
+      Log.i("nnn","currentY:"+y);
+      invalidate();
+    }
+  }
+
+
+  Scroller flingController;
+
 
 
   TextPaint paint1;
   @Override
   protected void onDraw(Canvas canvas) {
-     for(int ii=-10;ii<10;ii++){
+     for(int ii=-1000;ii<1000;ii++){
        canvas.drawText(""+ii,0,50*ii,paint1);
      }
   }
+
+
 
   @Override
   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -157,9 +208,6 @@ public class NestedScrollingChildView2 extends View implements NestedScrollingCh
   private int getMinWidth() {
     return 150;
   }
-
-
-
   private int measureDimension(int defaultSize, int measureSpec) {
     int result=0;
 

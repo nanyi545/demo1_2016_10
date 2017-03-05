@@ -4,15 +4,8 @@ import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import android.widget.TextView;
-
-import com.nanyi545.www.materialdemo.R;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -20,23 +13,28 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Created by Administrator on 2017/2/28.
  *
- * this Class only supports pull down ....
+ * this Class supports pull down  and up  ....   --> better understanding of collapsing toolbar layout is needed ....
  *
  */
-public class CoordinatorPullToRefresh extends CoordinatorPullable {
+public class CoordinatorPullToRefresh2 extends CoordinatorPullable {
 
-    public CoordinatorPullToRefresh(Context context) {
-        this(context,null);
+
+    public CoordinatorPullToRefresh2(Context context) {
+        super(context);
     }
 
-    public CoordinatorPullToRefresh(Context context, AttributeSet attrs) {
-        this(context,attrs,0);
+    public CoordinatorPullToRefresh2(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
-    public CoordinatorPullToRefresh(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CoordinatorPullToRefresh2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
+
+
+
+
 
 
     private Scroller mScroller;
@@ -49,50 +47,6 @@ public class CoordinatorPullToRefresh extends CoordinatorPullable {
         mScroller=new Scroller(context);
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent e) {
-        boolean ret=super.onInterceptTouchEvent(e);
-        Log.i("ccc","coordinator:  onInterceptTouchEvent RETURN:"+ret);  // this is always false
-        return ret;
-    }
-
-    private int totalDrag=0;
-
-    @Override
-    public void scrollBy(int x, int y) {
-        super.scrollBy(x, y);
-    }
-
-    public void dragDown1(int dy){   // dy < 0
-        if (mScroller.isFinished()){
-            totalDrag=totalDrag+dy;
-            Log.i("fff","--outer--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+getRevealHeight());  //
-            if ((-totalDrag)<getRevealHeight()){
-                Log.i("aaa","----coordinator LO drag down dy:"+dy);  //
-                Log.i("fff","--inner--coordinator LO drag down dy:"+dy+"  totalDrag:"+totalDrag+"   revealHeight:"+getRevealHeight());  //
-                this.scrollBy(0, dy);
-                float progress= (-totalDrag+0.0f) / getRevealHeight();
-                getRevealContent().setProgress(progress);
-            } else {
-                totalDrag=-getRevealHeight();
-                this.scrollTo(0, totalDrag);
-                getRevealContent().setProgress(1f);
-            }
-
-        }
-    }
-
-    public void releaseDrag(){
-        int dy =  - getScrollY();
-
-        Log.i("fff","--release: dy:"+dy+"  trigger release:"+(dy>0)+"   totalDrag now at:"+totalDrag);
-
-        if(dy>0){
-            mScroller.startScroll(0, getScrollY(), 0, dy,400);
-            totalDrag=0;
-            invalidate();
-        }
-    }
 
 
     @Override
@@ -104,18 +58,27 @@ public class CoordinatorPullToRefresh extends CoordinatorPullable {
                 Log.i("ccc","--------action down-----------");
                 break;
             case MotionEvent.ACTION_MOVE:
-
+                Log.i("ccc","--------action move-----------");
 
                 float deltaX = xTouch-mLastX;
                 float deltaY = yTouch-mLastY;
                 float scrollByStart = deltaY;
-                Log.i("ccc","--------action move-----------scrollByStart:"+scrollByStart+"    getScrollY:"+getScrollY());
 
-                if (( getScrollY() <= 0)&& ( scrollByStart >= 0)){    // only when scroll down( scrollByStart>= 0 ) is allowed  !!!
+
+                if (( getScrollY() <= 0)&& ( scrollByStart >= 0)){    //   when scroll down( scrollByStart>= 0 ) is allowed  !!!
                     if(((-getScrollY()+(scrollByStart)) < getRevealHeight())   ){     //  when scroll down within  revealHeight ( scrollByStart < revealHeight )
                         scrollBy(0, (int) -scrollByStart);
                     } else {
                         scrollTo(0, -getRevealHeight());
+                    }
+                }
+
+
+                if ( scrollByStart < 0){    //   scroll up is allowed ....
+                    if( (getScrollY()-scrollByStart)<0 ){   //  only when the total scroll is <0  (scroll up is allowed after scrolling down .... )
+                        scrollBy(0, (int) -scrollByStart);
+                    } else {
+                        scrollTo(0, 0);
                     }
                 }
 
@@ -155,19 +118,6 @@ public class CoordinatorPullToRefresh extends CoordinatorPullable {
         return ontouchRet;
 
     }
-
-
-    @Override
-    public void computeScroll() {
-        // 第三步，重写computeScroll()方法，在其内部调用scrollTo或ScrollBy方法，完成滑动过程
-        if (mScroller.computeScrollOffset()) {
-            Log.i("ccc", "to x:" + mScroller.getCurrX() + "  to y:" + mScroller.getCurrY() + "----in:" + Thread.currentThread().getName());
-            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
-            invalidate();
-        }
-    }
-
-
 
 
 
