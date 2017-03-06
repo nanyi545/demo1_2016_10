@@ -3,32 +3,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--app:layout_behavior="com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO.CustomOffsetBehavior"-->
+    <!--app:layout_behavior="com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO.CustomHeaderScrollingViewBehavior"-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvToDoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_behavior="com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO.CustomHeaderScrollingViewBehavior"
         />
 
-
+    <!-- below line on AppBarLayout will disable the scroll_flag behavior, which  means codes are in AppBarLayout.Behavior -->
+    <!--app:layout_behavior="com.nanyi545.www.materialdemo.nestedScroll.EmptyBehavior"-->
     <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:id="@+id/app_bar"-->
+        <!--android:orientation="vertical"-->
         <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="100dp">-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+                <!--app:layout_scrollFlags="scroll|enterAlways"-->
+                <!--android:id="@+id/tv_title"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="title"-->
+                <!--android:padding="10dp"/>-->
+
         <!--<ImageView-->
             <!--android:layout_width="100dp"-->
             <!--android:layout_height="100dp"-->
             <!--android:src="@drawable/grad_red"/>-->
+
+            <!--<TextView-->
+                <!--app:layout_scrollFlags="scroll|enterAlways"-->
+                <!--android:id="@+id/tv_subtitle"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="subtitle"-->
+                <!--/>-->
+
     <!--</android.support.design.widget.AppBarLayout>-->
 
-    <LinearLayout
-        android:orientation="horizontal"
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp">
         <ImageView
@@ -36,7 +61,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/grad_red"/>
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

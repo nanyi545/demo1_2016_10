@@ -40,7 +40,10 @@
             android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
         <activity android:name=".nestedScroll.no_coordinator_test.NoCoordinatorNestedScrollTestActivity" />
         <activity android:name=".nestedScroll.no_coordinator_test.testWithCostumView.NoCoorNestedScrollTestActivity" />
-        <activity android:name=".coordinatorWithoutAppbarLO.CoordinatorWithoutAppbarActivity"></activity>
+        <activity
+            android:name=".coordinatorWithoutAppbarLO.CoordinatorWithoutCollapsingTLOActivity"
+            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
+        <activity android:name=".collapse_layout.TestCollapseLayoutActivity"></activity>
     </application>
 
 </manifest>

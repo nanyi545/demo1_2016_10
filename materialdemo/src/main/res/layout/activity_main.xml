@@ -98,7 +98,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="jumpCoordinatorNoAppbar"
-            android:text="test coordinator layout without appbar layour" />
+            android:text="test coordinator layout without collapsingToolbarLayout" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpCollapsLayout"
+            android:text="test custom collapse layout" />
 
     </LinearLayout>
 

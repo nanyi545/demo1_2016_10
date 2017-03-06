@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.nanyi545.www.materialdemo.behaviour2.BehaviourActivity2;
-import com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO.CoordinatorWithoutAppbarActivity;
+import com.nanyi545.www.materialdemo.collapse_layout.TestCollapseLayoutActivity;
+import com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO.CoordinatorWithoutCollapsingTLOActivity;
 import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity;
 import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity2;
 import com.nanyi545.www.materialdemo.nestedScroll.no_coordinator_test.testWithCostumView.NoCoorNestedScrollTestActivity;
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             Button btn1= (Button) findViewById(R.id.btn1);
-            ViewCompat.offsetLeftAndRight(btn1,60);
+            ViewCompat.offsetLeftAndRight(btn1,30);
             Button btn2= (Button) findViewById(R.id.btn2);
-            ViewCompat.offsetLeftAndRight(btn2,120);
+            ViewCompat.offsetLeftAndRight(btn2,60);
         }
     };
 
@@ -87,8 +87,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jumpCoordinatorNoAppbar(View v){
-        CoordinatorWithoutAppbarActivity.start(this);
+        CoordinatorWithoutCollapsingTLOActivity.start(this);
     }
+
+    public void jumpCollapsLayout(View v){
+        TestCollapseLayoutActivity.start(this);
+    }
+
+
 
 
 }
