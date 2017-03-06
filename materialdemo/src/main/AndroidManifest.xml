@@ -43,7 +43,11 @@
         <activity
             android:name=".coordinatorWithoutAppbarLO.CoordinatorWithoutCollapsingTLOActivity"
             android:theme="@style/AppTheme.NoTitle.TransparentSystemBar" />
-        <activity android:name=".collapse_layout.TestCollapseLayoutActivity"></activity>
+        <activity android:name=".collapse_layout.TestCollapseLayoutActivity" />
+        <activity
+            android:name=".customView.TestCustomViewActivity"
+            android:label="@string/title_activity_test_custom_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

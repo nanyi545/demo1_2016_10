@@ -106,6 +106,15 @@
             android:onClick="jumpCollapsLayout"
             android:text="test custom collapse layout" />
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpExploreCustomView"
+            android:text="test view drawing process" />
+
+
+
     </LinearLayout>
 
 </ScrollView>

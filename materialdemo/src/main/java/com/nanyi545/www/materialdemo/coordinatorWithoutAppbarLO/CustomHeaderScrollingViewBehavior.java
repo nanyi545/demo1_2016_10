@@ -39,15 +39,20 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-        return (child instanceof RecyclerView)&&(dependency instanceof  RelativeLayout);
+        boolean ret=(child instanceof RecyclerView)&&(dependency instanceof RelativeLayout);
+        if (ret) dependencyRL= (RelativeLayout) dependency;
+        return ret;
     }
 
+    RelativeLayout dependencyRL;
 
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
         Log.i("mmm","child.getScrollY():"+child.getScrollY()+"  dy:"+dy+"  target:"+target.getClass().getName());
         if ((child.getScrollY()==0)&&(dy<0)){
-            ViewCompat.offsetTopAndBottom(target,-30);
+            CoordinatorLayout.LayoutParams params= (CoordinatorLayout.LayoutParams) dependencyRL.getLayoutParams();
+            params.height-=5;
+            dependencyRL.setLayoutParams(params);
             coordinatorLayout.invalidate();
         }
 
@@ -170,7 +175,8 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
     }
 
     int getScrollRange(View v) {
-        return v.getMeasuredHeight();
+        return 0;
+//        return v.getMeasuredHeight();
     }
 
     /**

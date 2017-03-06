@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.nanyi545.www.materialdemo.behaviour2.BehaviourActivity2;
 import com.nanyi545.www.materialdemo.collapse_layout.TestCollapseLayoutActivity;
 import com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO.CoordinatorWithoutCollapsingTLOActivity;
+import com.nanyi545.www.materialdemo.customView.TestCustomViewActivity;
 import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity;
 import com.nanyi545.www.materialdemo.nestedScroll.TestNestedScrollActivity2;
 import com.nanyi545.www.materialdemo.nestedScroll.no_coordinator_test.testWithCostumView.NoCoorNestedScrollTestActivity;
@@ -94,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         TestCollapseLayoutActivity.start(this);
     }
 
+
+    public void jumpExploreCustomView(View v){
+        TestCustomViewActivity.start(this);
+    }
 
 
 

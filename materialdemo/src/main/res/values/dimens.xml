@@ -5,6 +5,7 @@
 
 
     <dimen name="reveal_height_imp1">100dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>
