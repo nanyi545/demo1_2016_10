@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.nanyi545.www.materialdemo.collapse_layout.CollapsHolder;
+
 import java.util.List;
 
 /**
@@ -46,14 +48,25 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
 
     RelativeLayout dependencyRL;
 
+
+
+
+    CollapsHolder.CollapsHolderManager manager;
+
+    public void setManager(CollapsHolder.CollapsHolderManager manager) {
+        this.manager = manager;
+    }
+
+
+
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
-        Log.i("mmm","child.getScrollY():"+child.getScrollY()+"  dy:"+dy+"  target:"+target.getClass().getName());
-        if ((child.getScrollY()==0)&&(dy<0)){
-            CoordinatorLayout.LayoutParams params= (CoordinatorLayout.LayoutParams) dependencyRL.getLayoutParams();
-            params.height-=5;
-            dependencyRL.setLayoutParams(params);
-            coordinatorLayout.invalidate();
+        Log.i("mmm","onNestedPreScroll  child.getScrollY():"+child.getScrollY()+"  dy:"+dy+"  target:"+target.getClass().getName());
+
+        RecyclerView casted= (RecyclerView) child;
+
+        if (manager!=null){
+            manager.collapse(dy);
         }
 
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
@@ -61,9 +74,29 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
 
 
     @Override
-    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
-        return true;
+    public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+        Log.i("mmm","onNestedScroll  child.getScrollY():"+child.getScrollY()+"  dyConsumed:"+dyConsumed+"  dyUnconsumed:"+dyUnconsumed+"  target:"+target.getClass().getName());
+
+        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
+
+    @Override
+    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
+
+        RecyclerView casted= (RecyclerView) child;
+
+        boolean recyclerAtTop =(casted.computeVerticalScrollOffset()<=0);
+        boolean collapsHoldersFullyCollapsed =manager.isFullyCollapsed();
+        boolean collapsHoldersFullyExpanded =manager.isFullyExpanded();
+
+        //    !recyclerAtTop   &&   collapsHoldersFullyCollapsed    -->  false
+        //    recyclerAtTop    --> true
+        Log.i("mmm","onStartNestedScroll:"+recyclerAtTop);
+
+        return recyclerAtTop;
+    }
+
+
 
 
     @Override
@@ -138,7 +171,7 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
                     child.getMeasuredHeight(), available, out, layoutDirection);
 
             final int overlap = getOverlapPixelsForOffset(header);
-            Log.i("mmm","layoutChild--overlap:"+overlap);
+//            Log.i("mmm","layoutChild--overlap:"+overlap);
 
 
             child.layout(out.left, out.top - overlap, out.right, out.bottom - overlap);

@@ -3,6 +3,7 @@ package com.nanyi545.www.materialdemo.coordinatorWithoutAppbarLO;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nanyi545.www.materialdemo.R;
+import com.nanyi545.www.materialdemo.collapse_layout.CollapsHolder;
 import com.nanyi545.www.materialdemo.utils.MyRVAdapter;
 
 public class CoordinatorWithoutCollapsingTLOActivity extends AppCompatActivity {
@@ -27,6 +29,8 @@ public class CoordinatorWithoutCollapsingTLOActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     MyRVAdapter mAdapter;
 
+
+    CollapsHolder.CollapsHolderManager manager;
 
 
     @Override
@@ -44,32 +48,12 @@ public class CoordinatorWithoutCollapsingTLOActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
-//        final TextView title= (TextView) findViewById(R.id.tv_title);
-//        final TextView subtitle= (TextView) findViewById(R.id.tv_subtitle);
-//
-//        AppBarLayout appBarLayout= (AppBarLayout) findViewById(R.id.app_bar);
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                Log.i("mmm","verticalOffset:"+verticalOffset);
-//
-////                title.setScaleY( ( -58-verticalOffset+0f)/(-58)  );
-////                subtitle.setScaleY( ( -58-verticalOffset+0f)/(-58)  );
-//
-////                if (subtitle.getHeight()!=0){
-////                    subtitle.setHeight(0);
-////                    appBarLayout.invalidate();
-////                }
-//                if (subtitle.getHeight()!=(39+verticalOffset)){
-//                    subtitle.setHeight(39+verticalOffset);
-//                    appBarLayout.invalidate();
-//                }
-//
-//            }
-//        });
+        manager=CollapsHolder.CollapsHolderManager.getInstance(getWindow().getDecorView().getRootView(),R.id.collapse_holder2,R.id.collapse_holder1);
 
 
 
+        CustomHeaderScrollingViewBehavior behavior= (CustomHeaderScrollingViewBehavior) ((CoordinatorLayout.LayoutParams)mRecyclerView.getLayoutParams()).getBehavior();
+        behavior.setManager(manager);
 
 
     }
