@@ -47,6 +47,8 @@ public class CostumRV extends RecyclerView {
         mLastY = yTouch;
         Log.i("eee","custom rv-------   onTouchEvent-ACTION:"+e.getAction()+"  OFFSET-V():"+computeVerticalScrollOffset() +" deltaY:"+deltaY+"   lastY:"+mLastY);
 
+
+
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 break;
@@ -66,6 +68,7 @@ public class CostumRV extends RecyclerView {
         boolean returnV=super.onTouchEvent(e);
         Log.i("ggg","custom rv-------   onTouchEvent-ACTION:"+e.getAction()+"  OFFSET-V():"+computeVerticalScrollOffset() +" deltaY:"+deltaY+"     default-return:"+returnV);
 
+        Log.i("aaa","custom rv-------   onTouchEvent-ACTION:"+e.getAction()+"  OFFSET-V():"+computeVerticalScrollOffset() +" deltaY:"+deltaY+"   lastY:"+mLastY +"     default-return:"+returnV);
         return returnV;   //  returnV
     }
 

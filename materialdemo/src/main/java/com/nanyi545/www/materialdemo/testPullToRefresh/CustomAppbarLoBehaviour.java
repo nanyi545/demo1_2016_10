@@ -26,12 +26,6 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
 
 
 
-    @Override
-    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes) {
-        boolean ret=super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes);
-        Log.i("lll","extended AppBarLayout.Behavior---- onStartNestedScroll  default ret:"+ret+"  directTargetChild:"+directTargetChild.getClass().getName()+"  target:"+target.getClass().getName());
-        return ret;
-    }
 
 
     @Override
@@ -65,6 +59,13 @@ public class CustomAppbarLoBehaviour extends AppBarLayout.Behavior {
     }
 
 
+
+    @Override
+    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes) {
+        boolean ret=super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes);
+        Log.i("lll","extended AppBarLayout.Behavior---- onStartNestedScroll  default ret:"+ret+"  directTargetChild:"+directTargetChild.getClass().getName()+"  target:"+target.getClass().getName());
+        return ret;
+    }
 
 
     @Override

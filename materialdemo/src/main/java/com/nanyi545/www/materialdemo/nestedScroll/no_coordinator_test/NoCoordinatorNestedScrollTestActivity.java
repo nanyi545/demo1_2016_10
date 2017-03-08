@@ -33,7 +33,8 @@ public class NoCoordinatorNestedScrollTestActivity extends AppCompatActivity {
 
         mRecyclerView = (CostumRV) findViewById(R.id.rvToDoList);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setNestedScrollingEnabled(false); // ...
+//        mRecyclerView.setNestedScrollingEnabled(false); // ...
+
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         String[] myDataset={"item1","item2","item3","item4","item5","item1","item2","item3","item4","item5","item1","item2","item3","item4","item5","item1","item2","item3","item4","item5"};

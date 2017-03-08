@@ -45,7 +45,7 @@ public class CostumScrollView2 extends NestedScrollView {
 
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
-        scrollBy(dx,dy);
+//        scrollBy(dx,dy);
         super.onNestedPreScroll(target, dx, dy, consumed);
     }
 

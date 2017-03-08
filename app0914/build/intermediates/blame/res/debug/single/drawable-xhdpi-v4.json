@@ -1,15 +1,15 @@
 [
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-xhdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+        "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_quit.png",
+        "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable-xhdpi\\icon_quit.png"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-xhdpi\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_quit.png",
-        "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable-xhdpi\\icon_quit.png"
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-xhdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_moreoverflow_mtrl_alpha.png",

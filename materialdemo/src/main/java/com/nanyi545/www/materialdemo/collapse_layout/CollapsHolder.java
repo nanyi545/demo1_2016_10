@@ -114,6 +114,11 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
         return 0;
     }
 
+    public void collapseAll(){
+        int deltaY=-currentShift;
+        collapse(deltaY);
+    }
+
     private void doCollapse(float deltaY) {
         final int count = getChildCount();
         for (int i = 0; i < count; i++) {
@@ -283,6 +288,16 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
                 overFlow=getHolders().get(currentActiveHolderIndex).collapse(overFlow);
             }
         }
+
+
+        public void collapseAll(){
+            for (CollapsHolder holder:getHolders()){
+                holder.collapseAll();
+            }
+            currentActiveHolderIndex=getHolders().size()-1;
+        }
+
+
 
         public boolean isFullyExpanded(){
             boolean currentActivatedAtBottom=(currentActiveHolderIndex==0);

@@ -52,24 +52,24 @@
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\logo_915.png"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\snackbar_background.xml",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\drawable\\snackbar_background.xml"
-    },
-    {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\bn_bg_open_defence_unpressed.xml",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable\\bn_bg_open_defence_unpressed.xml"
+    },
+    {
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\snackbar_background.xml",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\design\\22.2.1\\res\\drawable\\snackbar_background.xml"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_bn_confirm.xml",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable\\selector_bn_confirm.xml"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\alert1.png",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\alert1.png"
-    },
-    {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_xml_login_loginsubmit.xml",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable\\bg_xml_login_loginsubmit.xml"
+    },
+    {
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\alert1.png",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\alert1.png"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\logo_915.png",
@@ -108,12 +108,12 @@
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_check_material.xml"
-    },
-    {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_xml_login_settingdiv_btn_b.xml",
@@ -156,12 +156,12 @@
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\chatto_bg.xml"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_monitor_voice.xml",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\selector_monitor_voice.xml"
-    },
-    {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_rounded.xml",
         "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\exploded-aar\\com.github.traex.rippleeffect\\library\\1.2.3\\res\\drawable\\shape_rounded.xml"
+    },
+    {
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_monitor_voice.xml",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\selector_monitor_voice.xml"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\cornered_background.xml",
@@ -236,12 +236,12 @@
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable\\selector_monitor_voice_2.xml"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_xml_camera_config_bottom_bt.xml",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\bg_xml_camera_config_bottom_bt.xml"
-    },
-    {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_xml_mutual_head_add.xml",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable\\bg_xml_mutual_head_add.xml"
+    },
+    {
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_xml_camera_config_bottom_bt.xml",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable\\bg_xml_camera_config_bottom_bt.xml"
     },
     {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable\\complete_state_selector.xml",

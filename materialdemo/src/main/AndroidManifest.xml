@@ -47,7 +47,9 @@
         <activity
             android:name=".customView.TestCustomViewActivity"
             android:label="@string/title_activity_test_custom_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".coordinatorWithoutAppbarLO.CoordinatorWithoutCollapTLOActivity2"
+            android:theme="@style/AppTheme.NoTitle.TransparentSystemBar"></activity>
     </application>
 
 </manifest>

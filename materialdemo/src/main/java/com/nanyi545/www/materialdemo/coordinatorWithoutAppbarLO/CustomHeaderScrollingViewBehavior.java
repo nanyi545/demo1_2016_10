@@ -65,9 +65,29 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
 
         RecyclerView casted= (RecyclerView) child;
 
-        if (manager!=null){
-            manager.collapse(dy);
+        boolean recyclerAtTop =(casted.computeVerticalScrollOffset()<=0);
+        boolean collapsHoldersFullyCollapsed =manager.isFullyCollapsed();
+        boolean collapsHoldersFullyExpanded =manager.isFullyExpanded();
+
+
+        if (dy>0)   //  scroll up   --> to collapse  dy > 0
+        {
+            if (!collapsHoldersFullyCollapsed){
+                if (manager!=null){
+                    manager.collapse(dy);
+                }
+            }
         }
+        if (dy<0)  //    scroll down --> to expand    deltaY<0
+        {
+            if (!collapsHoldersFullyExpanded){
+                if (manager!=null){
+                    manager.collapse(dy);
+                }
+            }
+        }
+
+
 
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
     }
@@ -80,12 +100,22 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
 
+
+    /**
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param directTargetChild
+     * @param target
+     * @param nestedScrollAxes
+     * @return
+     */
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
 
         RecyclerView casted= (RecyclerView) child;
 
-        boolean recyclerAtTop =(casted.computeVerticalScrollOffset()<=0);
+        boolean recyclerAtTop =(casted.computeVerticalScrollOffset()<=10);
         boolean collapsHoldersFullyCollapsed =manager.isFullyCollapsed();
         boolean collapsHoldersFullyExpanded =manager.isFullyExpanded();
 
@@ -94,6 +124,7 @@ public class CustomHeaderScrollingViewBehavior extends CustomOffsetBehavior<View
         Log.i("mmm","onStartNestedScroll:"+recyclerAtTop);
 
         return recyclerAtTop;
+
     }
 
 

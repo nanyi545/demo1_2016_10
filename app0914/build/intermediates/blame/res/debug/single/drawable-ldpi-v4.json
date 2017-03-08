@@ -44,12 +44,12 @@
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable-ldpi\\bg_login_top.png"
     },
     {
-        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\bg_login_middle.png",
-        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable-ldpi\\bg_login_middle.png"
-    },
-    {
         "merged": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_c_grey.png",
         "source": "D:\\ASprojects\\station_2_23\\demos_2016_10\\app0914\\src\\main\\res\\drawable-ldpi\\icon_c_grey.png"
+    },
+    {
+        "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\bg_login_middle.png",
+        "source": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\src\\main\\res\\drawable-ldpi\\bg_login_middle.png"
     },
     {
         "merged": "D:\\asprojects\\demos\\demos1_2016_10\\app0914\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_host.png",
