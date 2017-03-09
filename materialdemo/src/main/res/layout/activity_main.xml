@@ -104,7 +104,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="jumpCoordinatorNoCollapseBLO"
-            android:text="test coordinator layout without collapsingToolbarLayout  -- but use AppbarLayout" />
+            android:text="test coordinator layout without collapsingToolbarLayout  -- but use AppbarLayout -- Custom  AppbarLayout behaviour" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpCoordinatorNoCollapseBLO2"
+            android:text="test coordinator layout without collapsingToolbarLayout  -- but use AppbarLayout  -- Custom ScrollingView behaviour" />
 
 
         <Button

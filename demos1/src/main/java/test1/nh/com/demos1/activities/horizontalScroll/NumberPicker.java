@@ -694,6 +694,7 @@ public class NumberPicker extends View {
         invalidate();
     }
 
+
     /**
      * 数字对象，保存有该数字所在的起始Y坐标，在当前显示项的index
      */
@@ -781,7 +782,6 @@ public class NumberPicker extends View {
         /**
          * Callback invoked while the number picker scroll state has changed.
          *
-         * @param view The view whose scroll state is being reported.
          * @param scrollState The current scroll state. One of
          *            {@link #SCROLL_STATE_IDLE},
          *            {@link #SCROLL_STATE_TOUCH_SCROLL} or

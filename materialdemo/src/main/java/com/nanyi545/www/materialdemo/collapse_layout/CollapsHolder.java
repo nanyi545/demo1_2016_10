@@ -115,7 +115,7 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
     }
 
     public void collapseAll(){
-        int deltaY=-currentShift;
+        int deltaY=initialHeight+currentShift;
         collapse(deltaY);
     }
 
@@ -282,7 +282,7 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
         public void collapse(int deltaY){
             int overFlow = getHolders().get(currentActiveHolderIndex).collapse(deltaY);
             int loopCount=0;
-            while ((overFlow!=0)&&(loopCount<=3))  {     //  assume  loopCount  > 3  --->  reaching the collaps/expansion limit for this group of  CollapsHolders ....
+            while ((overFlow!=0)&&(loopCount<=3))  {     //  assume  loopCount  > 3 means reaching the collaps/expansion limit for this group of  CollapsHolders ....
                 loopCount+=1;
                 switchCurrentActiveHolder(overFlow);
                 overFlow=getHolders().get(currentActiveHolderIndex).collapse(overFlow);

@@ -49,6 +49,8 @@ public class CustomAppbarLoBehaviour2 extends AppBarLayout.Behavior {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
     }
 
+
+
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
 
