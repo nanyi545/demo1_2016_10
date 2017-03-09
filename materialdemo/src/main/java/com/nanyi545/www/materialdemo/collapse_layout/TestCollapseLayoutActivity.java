@@ -42,12 +42,14 @@ public class TestCollapseLayoutActivity extends AppCompatActivity implements Ges
 
     public void doExpand(View v){
 //        holder.expand();
-        manager.collapse(-1);
+//        manager.collapse(-1);
+        holder.expand();
     }
 
     public void doCollapse(View v){
 //        holder.collapse();
-        manager.collapse(1);
+        holder.smoothCollapseAll();
+//        manager.collapse(1);
     }
 
 

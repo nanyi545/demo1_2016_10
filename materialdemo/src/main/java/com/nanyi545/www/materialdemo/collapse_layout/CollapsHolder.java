@@ -2,6 +2,8 @@ package com.nanyi545.www.materialdemo.collapse_layout;
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
+import android.widget.Scroller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +60,12 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
                             CollapsHolder.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         }
                     }
-
                 }
             });
         }
+
+        collapseController=new Scroller(getContext());
+
 
     }
 
@@ -69,6 +74,8 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
+
 
     int initialHeight;
 
@@ -82,6 +89,7 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
     private int currentShift =0;
 
 
+    private Scroller collapseController;
 
 
 
@@ -118,6 +126,41 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
         int deltaY=initialHeight+currentShift;
         collapse(deltaY);
     }
+
+
+
+    private static final int SMOOTH_COLAPSE=11;
+    public void smoothCollapseAll(){
+        int startShift=currentShift;
+        int endShift=-initialHeight;
+        if (collapseController.isFinished())
+        collapseController.startScroll(0, startShift, 0, endShift, 300);
+        smoothCollapseHandler.sendEmptyMessage(SMOOTH_COLAPSE);
+    }
+
+
+
+    Handler smoothCollapseHandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what==SMOOTH_COLAPSE){
+                if (collapseController.computeScrollOffset()){
+                    int deltaY=currentShift-collapseController.getCurrY();
+                    collapse(deltaY);
+                    smoothCollapseHandler.sendEmptyMessage(SMOOTH_COLAPSE);
+                }
+            }
+        }
+    };
+
+
+
+
+
+
+
+
 
     private void doCollapse(float deltaY) {
         final int count = getChildCount();
@@ -292,7 +335,8 @@ public class CollapsHolder extends RelativeLayout implements GestureDetector.OnG
 
         public void collapseAll(){
             for (CollapsHolder holder:getHolders()){
-                holder.collapseAll();
+//                holder.collapseAll();
+                holder.smoothCollapseAll();
             }
             currentActiveHolderIndex=getHolders().size()-1;
         }
